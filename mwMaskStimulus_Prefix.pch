@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'mwMaskStimulus' target in the 'mwMaskStimulus' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
