@@ -5,9 +5,10 @@
     
     <isa>Stimulus</isa>
     
-    
+    <!--
     <inspector>ImageStimulusInspectorView</inspector>
-    
+    -->
+
     <description>
       An image mask stimulus
     </description>

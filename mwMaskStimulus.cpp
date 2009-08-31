@@ -267,22 +267,28 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         channel_modulus[3][i] = image_data[(i*4)+3];// A
     }
     
-    mprintf("=!= Modulus =!= %s",tag.c_str());
+    //mprintf("=!= Modulus =!= %s",tag.c_str());
+    //std::cout << "== Modulus == " << tag << "\n";
     // store magnitude (not phase)
     for (int i = 0; i < 3; i++) {
-        mprintf("  %i::",i);
+        //mprintf("  %i::",i);
         //printStats(channel_modulus[i],(height*width));
         // make space for fftw result
-        fftwf_complex *channel_fft = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * ((height * width)/2 +1));
+        //std::cout << "H:" << height << " W:" << width << "\n";
+        fftwf_complex *channel_fft = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
+        //std::cout << "Making plan\n";
         //channel_fft[i] = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
         // plan fft for this channel
-        // using FFTW_MEASURE overwrites whatever is in the input array
+        // using FFTW_MEASURE overwrites whatever is in the input array so use FFTW_ESTIMATE
+        // crashes (w/KERN_INVALID_ADDRESS) if out (channel_fft) is too small
         fftwf_plan fft_mask_plan = fftwf_plan_dft_r2c_2d(height, width, channel_modulus[i], channel_fft, FFTW_ESTIMATE);
         // need to do some paddings
         
         // perform fft storing output in channel_fft[i]
+        //std::cout << "Executing plan\n";
         fftwf_execute(fft_mask_plan);
-        mprintf("\t-post-fft-");
+        //std::cout << "--post-fft--\n";
+        //mprintf("\t-post-fft-");
         //printStats(channel_fft,((height*width)/2 + 1));
         // calculate modulus of fft: sqrt(real ** 2 + imag ** 2)
         for (int j = 0; j < ((height * width)/2+1); j++) {
@@ -292,7 +298,7 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         // clean up
         fftwf_destroy_plan(fft_mask_plan);
         fftwf_free(channel_fft);
-        mprintf("\t-post-modulus-");
+        //mprintf("\t-post-modulus-");
         //printStats(channel_modulus[i],((height*width)/2+1));
     }
     
@@ -320,6 +326,9 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         throw SimpleException(
                               (boost::format("Cannot bind image texture. IL Image Library Error") % il_error).str());
         free(image_data);
+        for (int i = 0; i < 4; i++) {
+            free(channel_modulus[i]);
+        }
         return;
     }
 	
@@ -328,6 +337,9 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         throw SimpleException(M_DISPLAY_MESSAGE_DOMAIN,
                               (boost::format("Cannot delete image. IL Image Library Error: %s") % il_error).str());
         free(image_data);
+        for (int i = 0; i < 4; i++) {
+            free(channel_modulus[i]);
+        }
         return;
     }
     
