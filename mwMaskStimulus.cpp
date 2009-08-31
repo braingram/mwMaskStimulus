@@ -19,7 +19,6 @@ mwMaskStimulus::mwMaskStimulus(std::string _tag, std::string _filename,
                                shared_ptr<Variable> _alpha,
                                shared_ptr<Variable> _random_seed)
                                 : ImageStimulus (_tag, _filename, _xoffset, _yoffset, _xscale, _yscale, _rot, _alpha) {
-    //mask_textures = new ExpandableList<GLuint>();
     random_seed = _random_seed;
 }
 
@@ -42,50 +41,43 @@ shared_ptr<Variable> mwMaskStimulus::getRandomSeed() {
     return random_seed;
 }
 
+//void printStats(float* things, int N) {
+//    float max = things[0];
+//    float min = things[0];
+//    float mean = things[0];
+//    for (int i = 1; i < N; i++) {
+//        max = (things[i] > max)? things[i]: max;
+//        min = (things[i] < min)? things[i]: min;
+//        mean += things[i];
+//    }
+//    mean /= N;
+//    mprintf("\tMax: %f\tMin: %f\tMean: %f",max,min,mean);
+//}
+//
+//void printStats(fftwf_complex* things, int N) {
+//    float rMax = things[0][0]; float iMax = things[0][1];
+//    float rMin = things[0][0]; float iMin = things[0][1];
+//    float rMean = things[0][0]; float iMean = things[0][1];
+//    for (int i = 1; i < N; i++) {
+//        rMax = (things[i][0] > rMax)? things[i][0]: rMax;
+//        iMax = (things[i][1] > iMax)? things[i][1]: iMax;
+//        rMin = (things[i][0] < rMin)? things[i][0]: rMin;
+//        iMin = (things[i][1] < iMin)? things[i][1]: iMin;
+//        rMean += things[i][0];
+//        iMean += things[i][1];
+//    }
+//    rMean /= N; iMean /= N;
+//    mprintf("\tReal:");
+//    mprintf("\t\tMax: %f\tMin: %f\tMean: %f",rMax,rMin,rMean);
+//    mprintf("\tImag:");
+//    mprintf("\t\tMax: %f\tMin: %f\tMean: %f",iMax,iMin,iMean);
+//}
+
 void mwMaskStimulus::makeMask(StimulusDisplay *display) {
     if(!loaded){
         mprintf("Attempted to make mask when image was not loaded, no mask made");
         return;
     }
-//    mprintf("-----------------------------------------------------------------");
-//    mprintf("---------------------processing %s -------------",tag.c_str());
-    
-    
-//    for (int i = 0; i < 3; i++) {
-//        float imageMax = -1000.0;
-//        float imageMin = 1000.0;
-//        float imageMean = 0.0;
-//        for (int j = 0; j < (height * width); j++) {
-//            imageMean += image_data[(j*4)+i];
-//            imageMax = (image_data[(j*4)+i] > imageMax) ? image_data[(j*4)+i] : imageMax;
-//            imageMin = (image_data[(j*4)+i] < imageMin) ? image_data[(j*4)+i] : imageMin;
-//        }
-//        imageMean /= height * width;
-//        mprintf("%i::Pre Mask::::",i);
-//        mprintf("\tMax:  %f",imageMax);
-//        mprintf("\tMin:  %f",imageMin);
-//        mprintf("\tMean: %f",imageMean);
-//    }
-    
-    for (int i = 0; i < 3; i++) {
-        float max = -1000.0;
-        float min = 1000.0;
-        float mean = 0.0;
-        for (int j = 0; j < ((height * width)/2+1); j++) {
-            mean += channel_modulus[i][j];
-            max = (channel_modulus[i][j] > max)? channel_modulus[i][j]: max;
-            min = (channel_modulus[i][j] < min)? channel_modulus[i][j]: min;
-        }
-        mean /= height * width;
-        mprintf("%i::Pre Mask Channel Modulus:: %s ::",i,tag.c_str());
-        mprintf("%i: Max: %f\tMin: %f\tMean: %f",i,max,min,mean);
-    }
-    
-    
-    // ======================================
-    //      Making mask fubars colorLines
-    // ======================================
-    
     
     // generate random phase
     boost::mt19937 rng;
@@ -126,7 +118,8 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
         // make space for fftw output !!! possibly move this out of the loop? !!!
         float *out = (float*) calloc(height*width,sizeof(float));
         // make fftw plan !!! possibly move this out of the loop? !!!
-        fftwf_plan fft_mask_plan = fftwf_plan_dft_c2r_2d(height, width, in, out, FFTW_MEASURE);
+        // using FFTW_MEASURE overwrites whatever is in the input array
+        fftwf_plan fft_mask_plan = fftwf_plan_dft_c2r_2d(height, width, in, out, FFTW_ESTIMATE);
         // exectue fft
         fftwf_execute(fft_mask_plan);
         // copy out to mask_data
@@ -135,44 +128,19 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
             mask_data[(j*4)+i] = out[j]/(height * width);
         }
         
-        float max = -1000.0; float min = 1000.0; float mean = 0.0;
-        for (int j = 0; j < (height * width); j++) {
-            mean += out[j];
-            max = (out[j] > max)? out[j]: max;
-            min = (out[j] < min)? out[j]: min;
-        }
-        mean /= (height * width);
-        mprintf(" %i :: ifft output :: %s",i,tag.c_str());
-        mprintf("    max: %f\tmin: %f\tmean: %f",max,min,mean);
-        
         fftwf_destroy_plan(fft_mask_plan);
         fftwf_free(in);
         free(out);
         //lock->unlock();
     }
     
-    for (int i = 0; i < 3; i++) {
-        float maskMax = -1000.0;
-        float maskMin = 1000.0;
-        float maskMean = 0.0;
-        for (int j = 0; j < (height * width); j++) {
-            maskMean += mask_data[(j*4)+i];
-            maskMax = (mask_data[(j*4)+i] > maskMax) ? mask_data[(j*4)+i] : maskMax;
-            maskMin = (mask_data[(j*4)+i] < maskMin) ? mask_data[(j*4)+i] : maskMin;
-        }
-        maskMean /= height * width;
-        mprintf("%i:: Mask :: %s ::",i,tag.c_str());
-        mprintf("%i: Max: %f\tMin: %f\tMean: %f",i,maskMax,maskMin,maskMean);
-    }
-    
-    
     // normalize
     for (int i = 0; i < 3; i++) {
-        float maskMax = -1000.0;
-        float maskMin = 1000.0;
+        float maskMax = mask_data[i];
+        float maskMin = mask_data[i];
         float maskMean = 0.0;
-        float imageMax = -1000.0;
-        float imageMin = 1000.0;
+        float imageMax = image_data[i];
+        float imageMin = image_data[i];
         float imageMean = 0.0;
         for (int j = 0; j < (height * width); j++) {
             maskMean += mask_data[(j*4)+i];
@@ -182,65 +150,22 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
             imageMax = (image_data[(j*4)+i] > imageMax) ? image_data[(j*4)+i] : imageMax;
             imageMin = (image_data[(j*4)+i] < imageMin) ? image_data[(j*4)+i] : imageMin;
         }
-        maskMean /= height * width;
-        imageMean /= height * width;
-//        mprintf("%i::Mask::::", i);
-//        mprintf("\tMax:  %f",maskMax);
-//        mprintf("\tMin:  %f",maskMin);
-//        mprintf("\tMean: %f",maskMean);
-//        mprintf("%i::Image::::",i);
-//        mprintf("\tMax:  %f",imageMax);
-//        mprintf("\tMin:  %f",imageMin);
-//        mprintf("\tMean: %f",imageMean);
+        maskMean /= (height * width);
+        imageMean /= (height * width);
         // normalize
         float scale = imageMean/(maskMean-maskMin);
-        scale = (scale > ((1-imageMean)/(maskMax-maskMean))) ? ((1-imageMean)/(maskMax-maskMean)) : scale;
+        scale = (scale > ((1-imageMean)/(maskMax-maskMean)))? ((1-imageMean)/(maskMax-maskMean)) : scale;
         //mScale = min(mean(image)/(mean(mask)-mask.min()), (1-mean(image))/(mask.max()-mean(mask)))
         for (int j = 0; j < (height * width); j++) {
             mask_data[(j*4)+i] = scale * mask_data[(j*4)+i] + (imageMean - maskMean * scale);
         }
-        //return mScale*mask+(mean(image)-mean(mask)*mScale)
     }
     
     // copy over alpha
     for (int i = 0; i < (height * width); i++) {
-        // -- show original ---
-//                mask_data[(i*4)+0] = image_data[(i*4)+0];
-//                mask_data[(i*4)+1] = image_data[(i*4)+1];
-//                mask_data[(i*4)+2] = image_data[(i*4)+2];
-//                mask_data[(i*4)+3] = image_data[(i*4)+3];
-        // -- red square --
-//        mask_data[(i*4)+0] = 1.0;
-//        mask_data[(i*4)+1] = 0.0;
-//        mask_data[(i*4)+2] = 0.0;
-//        mask_data[(i*4)+3] = 0.5; // 0.0 should be opaque
-//        // -- modulus --
-//        mask_data[(i*4)+0] = channel_modulus[0][i];
-//        mask_data[(i*4)+1] = channel_modulus[1][i];
-//        mask_data[(i*4)+2] = channel_modulus[2][i];
         // -- copy alpha --
         mask_data[(i*4)+3] = channel_modulus[3][i];
     }
-    
-//    // --------- DEBUGGING -------------
-//    // print out image statistics
-//    float maskMax = 0.0;
-//    float maskMin = 1.0;
-//    float imageMax = 0.0;
-//    float imageMin = 1.0;
-//    for (int i = 0; i < (height * width * 4); i++) {
-//        maskMax = (mask_data[i] > maskMax)? mask_data[i]: maskMax;
-//        maskMin = (mask_data[i] < maskMin)? mask_data[i]: maskMin;
-//        imageMax = (image_data[i] > imageMax)? image_data[i]: imageMax;
-//        imageMin = (image_data[i] < imageMin)? image_data[i]: imageMin;
-//    }
-//    mprintf("::::Mask:::: Post Norm");
-//    mprintf("\tMax: %f",maskMax);
-//    mprintf("\tMin: %f",maskMin);
-//    mprintf("::::Image:::: Post Norm");
-//    mprintf("\tMax: %f",imageMax);
-//    mprintf("\tMin: %f",imageMin);
-//    // ---------------------------------
     
     // delete old textures
     // move 'masks' (original images right now) to gpu
@@ -269,31 +194,15 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
     // replace with new textures
     fftwf_free(random_phase);
     free(mask_data);
-    
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//    // copy new mask to textures
-//    for(int i = 0; i < display->getNContexts(); i++){
-//        display->setCurrent(i);
-//        texture_maps->addElement(i, texture_map);
-//        
-//    };
 }
 
 void mwMaskStimulus::load(StimulusDisplay *display) {
-    // loads image into a texture of format RGBA FLOAT
-    
-    //GlobalOpenGLContextManager->setGlobalContextCurrent();
     if(loaded){
-        // !!! TODO !!!
-        // regenerate mask
+        // if stimulus is already loaded, just generate a new mask
         makeMask(display);
 		return;
 	}
 	
-    // ---------- New ---------------
-    
-    //std::cout << "Loading image mask stimulus\n";
     // check if file exists
     if(filename == ""){
 		throw SimpleException("Cannot load image (NULL filename).");
@@ -339,7 +248,6 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
     ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
     ilEnable(IL_ORIGIN_SET);
     ilCopyPixels(0, 0, 0, (ILuint)width, (ILuint)height, 1, IL_RGBA, IL_FLOAT, (ILvoid*) image_data);
-    // !!! TODO check for errors
     if ((il_error = ilGetError()) != IL_NO_ERROR) {
         throw SimpleException(
                               (boost::format("Cannot copy image data from ilImage") % il_error).str());
@@ -347,7 +255,6 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         free(image_data);
         return;
     }
-    //ILubyte *Data = ilGetData(); 
     
     // break up image data into R G B A
     for (int i = 0; i < 4; i++) {
@@ -360,67 +267,33 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         channel_modulus[3][i] = image_data[(i*4)+3];// A
     }
     
-    for (int i = 0; i < 3; i++) {
-        float max = -1000.0;
-        float min = 1000.0;
-        float mean = 0.0;
-        for (int j = 0; j < (height * width); j++) {
-            mean += channel_modulus[i][j];
-            max = (channel_modulus[i][j] > max)? channel_modulus[i][j]: max;
-            min = (channel_modulus[i][j] < min)? channel_modulus[i][j]: min;
-        }
-        mean /= height * width;
-        mprintf("%i:: Pre Modulus :: %s ::",i,tag.c_str());
-        mprintf("%i: Max: %f\tMin: %f\tMean: %f",i,max,min,mean);
-    }
-    
-    // ======================================
-    //      Modulus fubars thumbs_up
-    // ======================================
-    
-    // !!! TODO !!!
-    // Data are in format RGBA and of type FLOAT. So, to put it in a form fftw
-    // can understand we must...
-    
-    // fourier transform image data
-    //  plan fft from float -> complex
-    //fftwf_plan fft_mask_plan = fftwf_plan_dft_r2c_2d()
-    //  plan ifft from complex -> float
-    //ifft_mask_plan = fftwf_plan_dft_c2r_2d()
+    mprintf("=!= Modulus =!= %s",tag.c_str());
     // store magnitude (not phase)
     for (int i = 0; i < 3; i++) {
+        mprintf("  %i::",i);
+        //printStats(channel_modulus[i],(height*width));
         // make space for fftw result
-        fftwf_complex *channel_fft = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
+        fftwf_complex *channel_fft = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * ((height * width)/2 +1));
         //channel_fft[i] = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
         // plan fft for this channel
-        fftwf_plan fft_mask_plan = fftwf_plan_dft_r2c_2d(height, width, channel_modulus[i], channel_fft, FFTW_MEASURE);
-        // need to do some padding
+        // using FFTW_MEASURE overwrites whatever is in the input array
+        fftwf_plan fft_mask_plan = fftwf_plan_dft_r2c_2d(height, width, channel_modulus[i], channel_fft, FFTW_ESTIMATE);
+        // need to do some paddings
         
         // perform fft storing output in channel_fft[i]
         fftwf_execute(fft_mask_plan);
+        mprintf("\t-post-fft-");
+        //printStats(channel_fft,((height*width)/2 + 1));
         // calculate modulus of fft: sqrt(real ** 2 + imag ** 2)
-        for (int j = 0; j < (height * width); j++) {
+        for (int j = 0; j < ((height * width)/2+1); j++) {
             channel_modulus[i][j] = sqrt(channel_fft[j][0] * channel_fft[j][0] + channel_fft[j][1] * channel_fft[j][1]);
         }
         // !!! TODO !!! do I need scaling? 1/sqrt(rows * cols)
         // clean up
         fftwf_destroy_plan(fft_mask_plan);
         fftwf_free(channel_fft);
-        //lock->unlock();
-    }
-    
-    for (int i = 0; i < 3; i++) {
-        float max = -1000.0;
-        float min = 1000.0;
-        float mean = 0.0;
-        for (int j = 0; j < ((height * width)/2+1); j++) {
-            mean += channel_modulus[i][j];
-            max = (channel_modulus[i][j] > max)? channel_modulus[i][j]: max;
-            min = (channel_modulus[i][j] < min)? channel_modulus[i][j]: min;
-        }
-        mean /= height * width;
-        mprintf("%i::Post Modulus:: %s ::",i,tag.c_str());
-        mprintf("%i: Max: %f\tMin: %f\tMean: %f",i,max,min,mean);
+        mprintf("\t-post-modulus-");
+        //printStats(channel_modulus[i],((height*width)/2+1));
     }
     
     // move 'masks' (original images right now) to gpu
@@ -441,19 +314,11 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         // !!! do I need to readd the texture to the list !!!
         texture_maps->addElement(i, texture_map);
         glBindTexture(GL_TEXTURE_2D, 0);
-        
-//		//texture_map = ilutGLBindMipmaps();
-//        texture_maps->addElement(i, texture_map);
-//		if(texture_map){
-//			mprintf("Mask Image loaded into texture_map %d", texture_map);
-//		}
 	}
     
     if((il_error = ilGetError()) != IL_NO_ERROR) {
         throw SimpleException(
                               (boost::format("Cannot bind image texture. IL Image Library Error") % il_error).str());
-        //image_loaded = false;
-		//lock->unlock();
         free(image_data);
         return;
     }
@@ -462,8 +327,6 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
 	if((il_error = ilGetError()) != IL_NO_ERROR) {
         throw SimpleException(M_DISPLAY_MESSAGE_DOMAIN,
                               (boost::format("Cannot delete image. IL Image Library Error: %s") % il_error).str());
-        //image_loaded = false;
-		//lock->unlock();
         free(image_data);
         return;
     }
@@ -472,60 +335,7 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
     
     // make mask
     makeMask(display);
-    
-    // -------- end New -------------
-    
-//	// TODO: this needs clean up.  We are counting on all of the contexts
-//	// in the stimulus display to have the exact same history.  Ideally, this
-//	// should be true, but we should eventually be robust in case it isn't
-//	for(int i = 0; i < display->getNContexts(); i++){
-//		display->setCurrent(i);
-//		GLuint texture_map = OpenGLImageLoader::load(filename, display, &width, &height);
-//		texture_maps->addElement(i, texture_map);
-//        //		fprintf(stderr, "Loaded texture map %u into context %d\n", (unsigned int)texture_map, i);fflush(stderr);
-//		if(texture_map){
-//			mprintf("Image loaded into texture_map %d", texture_map);
-//		}
-//	}
-//    
-//    // BJG: is it necessary to store CPU-side image data for each context?
-//    if (display->getNContexts() < 1) {
-//        throw SimpleException("no display contexts currently defined");	
-//    }
-//    // allocate space for image data and...
-//    image_data = (float*) calloc(4 * height * width, sizeof(float));
-//    
-//    // pull down image from ONLY 1 context
-//    display->setCurrent(0);
-//    // bind texture
-//    glBindTexture(GL_TEXTURE_2D, *(texture_maps->getElement(display->getCurrentContextIndex())));
-//    glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_FLOAT, image_data);
-//    // unbind texture
-//    glBindTexture(GL_TEXTURE_2D, 0);
-//    
-//    for (int x = 0; x < width; x++) {
-//        for (int y = 0; y < height; y++) {
-//            std::cout << image_data[x+y*width];
-//        }
-//    }
-//    std::cout << "\n";
-    
-    
-	// TODO: update to work with lists
-	// TODO: this is wrong, because texture_map is unsigned...
-	/*if(texture_map > 0) {
-     loaded = true;
-     } else {
-     loaded = false;
-     }*/
 }
-
-//void mwMaskStimulus::drawInUnitSquare(StimulusDisplay *display) {
-//    //super.drawInUnitSquare(display);
-//    std::cout << "drawing in unit square for mask\n";
-//    ImageStimulus::drawInUnitSquare(display);
-//    std::cout << "finished drawin in unit square for mask\n";
-//}
 
 Data mwMaskStimulus::getCurrentAnnounceDrawData() {
     

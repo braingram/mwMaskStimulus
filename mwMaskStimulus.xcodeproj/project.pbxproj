@@ -244,7 +244,7 @@
 					"/Library/Application\\ Support/MonkeyWorks/Developer/lib/**",
 					"\"$(SRCROOT)\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-lfftw3f_threads";
 				PRODUCT_NAME = mwMaskStimulus;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -269,7 +269,7 @@
 					"/Library/Application\\ Support/MonkeyWorks/Developer/lib/**",
 					"\"$(SRCROOT)\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-lfftw3f_threads";
 				PRODUCT_NAME = mwMaskStimulus;
 				WRAPPER_EXTENSION = bundle;
 			};

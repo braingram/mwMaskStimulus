@@ -27,7 +27,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					138,
+					559,
 					20,
 					48,
 					43,
@@ -136,6 +136,54 @@
 			BFBE44DA104C43FD001285D7 /* PBXTextBookmark */ = BFBE44DA104C43FD001285D7 /* PBXTextBookmark */;
 			BFBE44DB104C43FD001285D7 /* PBXTextBookmark */ = BFBE44DB104C43FD001285D7 /* PBXTextBookmark */;
 			BFBE44DC104C43FD001285D7 /* PBXTextBookmark */ = BFBE44DC104C43FD001285D7 /* PBXTextBookmark */;
+			BFBE44DE104C4799001285D7 /* PBXTextBookmark */ = BFBE44DE104C4799001285D7 /* PBXTextBookmark */;
+			BFBE44DF104C4799001285D7 /* PBXTextBookmark */ = BFBE44DF104C4799001285D7 /* PBXTextBookmark */;
+			BFBE44E0104C4799001285D7 /* PBXTextBookmark */ = BFBE44E0104C4799001285D7 /* PBXTextBookmark */;
+			BFBE44E1104C49E1001285D7 /* PBXTextBookmark */ = BFBE44E1104C49E1001285D7 /* PBXTextBookmark */;
+			BFBE44E2104C49E1001285D7 /* PBXTextBookmark */ = BFBE44E2104C49E1001285D7 /* PBXTextBookmark */;
+			BFBE44E3104C49E1001285D7 /* PBXTextBookmark */ = BFBE44E3104C49E1001285D7 /* PBXTextBookmark */;
+			BFBE44E4104C4BDA001285D7 /* PBXTextBookmark */ = BFBE44E4104C4BDA001285D7 /* PBXTextBookmark */;
+			BFBE44E5104C4BDA001285D7 /* PBXTextBookmark */ = BFBE44E5104C4BDA001285D7 /* PBXTextBookmark */;
+			BFBE44E6104C4BDA001285D7 /* PBXTextBookmark */ = BFBE44E6104C4BDA001285D7 /* PBXTextBookmark */;
+			BFBE44E8104C4CA6001285D7 /* PBXTextBookmark */ = BFBE44E8104C4CA6001285D7 /* PBXTextBookmark */;
+			BFBE44E9104C4CA6001285D7 /* PBXTextBookmark */ = BFBE44E9104C4CA6001285D7 /* PBXTextBookmark */;
+			BFBE44EA104C4CA6001285D7 /* PBXTextBookmark */ = BFBE44EA104C4CA6001285D7 /* PBXTextBookmark */;
+			BFBE44EB104C4DD0001285D7 /* PBXTextBookmark */ = BFBE44EB104C4DD0001285D7 /* PBXTextBookmark */;
+			BFBE44EC104C4DD0001285D7 /* PBXTextBookmark */ = BFBE44EC104C4DD0001285D7 /* PBXTextBookmark */;
+			BFBE44ED104C4DD0001285D7 /* PBXTextBookmark */ = BFBE44ED104C4DD0001285D7 /* PBXTextBookmark */;
+			BFBE44F1104C4FF6001285D7 /* PBXTextBookmark */ = BFBE44F1104C4FF6001285D7 /* PBXTextBookmark */;
+			BFBE44F2104C4FF6001285D7 /* PBXTextBookmark */ = BFBE44F2104C4FF6001285D7 /* PBXTextBookmark */;
+			BFBE44F3104C4FF6001285D7 /* PBXTextBookmark */ = BFBE44F3104C4FF6001285D7 /* PBXTextBookmark */;
+			BFBE44F5104C5224001285D7 /* PBXTextBookmark */ = BFBE44F5104C5224001285D7 /* PBXTextBookmark */;
+			BFBE44F6104C5224001285D7 /* PBXTextBookmark */ = BFBE44F6104C5224001285D7 /* PBXTextBookmark */;
+			BFBE44F7104C5224001285D7 /* PBXTextBookmark */ = BFBE44F7104C5224001285D7 /* PBXTextBookmark */;
+			BFBE44F9104C523C001285D7 /* PBXTextBookmark */ = BFBE44F9104C523C001285D7 /* PBXTextBookmark */;
+			BFBE44FA104C523C001285D7 /* PBXTextBookmark */ = BFBE44FA104C523C001285D7 /* PBXTextBookmark */;
+			BFBE44FB104C523C001285D7 /* PBXTextBookmark */ = BFBE44FB104C523C001285D7 /* PBXTextBookmark */;
+			BFBE44FE104C5284001285D7 /* PBXTextBookmark */ = BFBE44FE104C5284001285D7 /* PBXTextBookmark */;
+			BFBE44FF104C5284001285D7 /* PBXTextBookmark */ = BFBE44FF104C5284001285D7 /* PBXTextBookmark */;
+			BFBE4500104C5284001285D7 /* PBXTextBookmark */ = BFBE4500104C5284001285D7 /* PBXTextBookmark */;
+			BFBE4502104C53C9001285D7 /* PBXTextBookmark */ = BFBE4502104C53C9001285D7 /* PBXTextBookmark */;
+			BFBE4503104C53C9001285D7 /* PBXTextBookmark */ = BFBE4503104C53C9001285D7 /* PBXTextBookmark */;
+			BFBE4504104C53C9001285D7 /* PBXTextBookmark */ = BFBE4504104C53C9001285D7 /* PBXTextBookmark */;
+			BFBE4507104C5441001285D7 /* PBXTextBookmark */ = BFBE4507104C5441001285D7 /* PBXTextBookmark */;
+			BFBE4508104C5441001285D7 /* PBXTextBookmark */ = BFBE4508104C5441001285D7 /* PBXTextBookmark */;
+			BFBE4509104C5441001285D7 /* PBXTextBookmark */ = BFBE4509104C5441001285D7 /* PBXTextBookmark */;
+			BFBE450C104C5548001285D7 /* PBXTextBookmark */ = BFBE450C104C5548001285D7 /* PBXTextBookmark */;
+			BFBE450D104C5548001285D7 /* PBXTextBookmark */ = BFBE450D104C5548001285D7 /* PBXTextBookmark */;
+			BFBE450E104C5548001285D7 /* PBXTextBookmark */ = BFBE450E104C5548001285D7 /* PBXTextBookmark */;
+			BFBE4512104C5866001285D7 /* PBXTextBookmark */ = BFBE4512104C5866001285D7 /* PBXTextBookmark */;
+			BFBE4513104C5866001285D7 /* PBXTextBookmark */ = BFBE4513104C5866001285D7 /* PBXTextBookmark */;
+			BFBE4514104C5866001285D7 /* PBXTextBookmark */ = BFBE4514104C5866001285D7 /* PBXTextBookmark */;
+			BFBE4518104C5984001285D7 /* PBXTextBookmark */ = BFBE4518104C5984001285D7 /* PBXTextBookmark */;
+			BFBE4519104C5984001285D7 /* PBXTextBookmark */ = BFBE4519104C5984001285D7 /* PBXTextBookmark */;
+			BFBE451A104C5984001285D7 /* PBXTextBookmark */ = BFBE451A104C5984001285D7 /* PBXTextBookmark */;
+			BFBE451B104C59EF001285D7 /* PBXTextBookmark */ = BFBE451B104C59EF001285D7 /* PBXTextBookmark */;
+			BFBE451C104C59EF001285D7 /* PBXTextBookmark */ = BFBE451C104C59EF001285D7 /* PBXTextBookmark */;
+			BFBE451D104C59EF001285D7 /* PBXTextBookmark */ = BFBE451D104C59EF001285D7 /* PBXTextBookmark */;
+			BFBE451F104C5ABA001285D7 /* PBXTextBookmark */ = BFBE451F104C5ABA001285D7 /* PBXTextBookmark */;
+			BFBE4520104C5ABA001285D7 /* PBXTextBookmark */ = BFBE4520104C5ABA001285D7 /* PBXTextBookmark */;
+			BFBE4521104C5ABA001285D7 /* PBXTextBookmark */ = BFBE4521104C5ABA001285D7 /* PBXTextBookmark */;
 			BFFB3A02104723FF00D37348 = BFFB3A02104723FF00D37348 /* PBXBookmark */;
 			BFFB3A18104728D800D37348 = BFFB3A18104728D800D37348 /* PBXTextBookmark */;
 			BFFB3A19104728D800D37348 = BFFB3A19104728D800D37348 /* PBXTextBookmark */;
@@ -220,16 +268,16 @@
 	5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {531, 756}}";
-			sepNavSelRange = "{762, 0}";
-			sepNavVisRange = "{42, 1688}";
+			sepNavSelRange = "{572, 0}";
+			sepNavVisRange = "{24, 1718}";
 			sepNavWindowFrame = "{{836, 73}, {590, 805}}";
 		};
 	};
 	5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {762, 7658}}";
-			sepNavSelRange = "{15759, 0}";
-			sepNavVisRange = "{14754, 2094}";
+			sepNavIntBoundsRect = "{{0, 0}, {762, 4942}}";
+			sepNavSelRange = "{1283, 1186}";
+			sepNavVisRange = "{2466, 2586}";
 			sepNavWindowFrame = "{{15, 73}, {821, 805}}";
 		};
 	};
@@ -251,7 +299,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 100";
 		rLen = 0;
-		rLoc = 3770;
+		rLoc = 3367;
 		rType = 0;
 		vrLen = 2304;
 		vrLoc = 3357;
@@ -261,7 +309,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -281,7 +329,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 381";
 		rLen = 0;
-		rLoc = 15768;
+		rLoc = 11138;
 		rType = 0;
 		vrLen = 2051;
 		vrLoc = 13859;
@@ -291,7 +339,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -311,7 +359,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 209";
 		rLen = 0;
-		rLoc = 9169;
+		rLoc = 6814;
 		rType = 0;
 		vrLen = 2142;
 		vrLoc = 6873;
@@ -321,7 +369,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -341,7 +389,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 117";
 		rLen = 0;
-		rLoc = 4648;
+		rLoc = 4245;
 		rType = 0;
 		vrLen = 2227;
 		vrLoc = 3842;
@@ -351,7 +399,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -370,8 +418,8 @@
 		isa = PBXTextBookmark;
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 208";
-		rLen = 188;
-		rLoc = 8953;
+		rLen = 0;
+		rLoc = 6786;
 		rType = 0;
 		vrLen = 2145;
 		vrLoc = 7336;
@@ -381,7 +429,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -401,7 +449,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 118";
 		rLen = 15;
-		rLoc = 4698;
+		rLoc = 4295;
 		rType = 0;
 		vrLen = 2464;
 		vrLoc = 3205;
@@ -411,7 +459,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -431,7 +479,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 410";
 		rLen = 0;
-		rLoc = 16779;
+		rLoc = 11843;
 		rType = 0;
 		vrLen = 1737;
 		vrLoc = 18983;
@@ -441,7 +489,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -461,7 +509,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 102";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3318;
 		rType = 0;
 		vrLen = 2683;
 		vrLoc = 3054;
@@ -471,7 +519,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -491,7 +539,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 115";
 		rLen = 0;
-		rLoc = 4045;
+		rLoc = 3642;
 		rType = 0;
 		vrLen = 2678;
 		vrLoc = 3054;
@@ -501,7 +549,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -521,7 +569,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 106";
 		rLen = 0;
-		rLoc = 4045;
+		rLoc = 3642;
 		rType = 0;
 		vrLen = 2581;
 		vrLoc = 3054;
@@ -531,7 +579,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -551,7 +599,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 135";
 		rLen = 0;
-		rLoc = 5561;
+		rLoc = 5231;
 		rType = 0;
 		vrLen = 2265;
 		vrLoc = 3962;
@@ -561,7 +609,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -580,8 +628,8 @@
 		isa = PBXTextBookmark;
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 198";
-		rLen = 239;
-		rLoc = 8517;
+		rLen = 0;
+		rLoc = 6786;
 		rType = 0;
 		vrLen = 2216;
 		vrLoc = 7104;
@@ -591,7 +639,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -610,8 +658,8 @@
 		isa = PBXTextBookmark;
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 198";
-		rLen = 239;
-		rLoc = 8517;
+		rLen = 0;
+		rLoc = 6786;
 		rType = 0;
 		vrLen = 2224;
 		vrLoc = 7104;
@@ -621,7 +669,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -641,7 +689,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 146";
 		rLen = 0;
-		rLoc = 6034;
+		rLoc = 5286;
 		rType = 0;
 		vrLen = 2268;
 		vrLoc = 3868;
@@ -651,7 +699,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 42;
@@ -671,7 +719,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -681,7 +729,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 398";
 		rLen = 0;
-		rLoc = 15624;
+		rLoc = 10992;
 		rType = 0;
 		vrLen = 2109;
 		vrLoc = 14171;
@@ -701,7 +749,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -711,7 +759,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 413";
 		rLen = 0;
-		rLoc = 16281;
+		rLoc = 11837;
 		rType = 0;
 		vrLen = 2049;
 		vrLoc = 14734;
@@ -731,7 +779,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -741,7 +789,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 131";
 		rLen = 0;
-		rLoc = 5282;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 2237;
 		vrLoc = 3962;
@@ -761,7 +809,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -771,7 +819,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 136";
 		rLen = 0;
-		rLoc = 5358;
+		rLoc = 5028;
 		rType = 0;
 		vrLen = 1995;
 		vrLoc = 14868;
@@ -791,7 +839,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -801,7 +849,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 405";
 		rLen = 0;
-		rLoc = 15624;
+		rLoc = 10992;
 		rType = 0;
 		vrLen = 2064;
 		vrLoc = 15134;
@@ -821,7 +869,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -831,7 +879,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 415";
 		rLen = 0;
-		rLoc = 15759;
+		rLoc = 11129;
 		rType = 0;
 		vrLen = 2036;
 		vrLoc = 15134;
@@ -851,7 +899,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
@@ -861,7 +909,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 135";
 		rLen = 0;
-		rLoc = 5358;
+		rLoc = 5028;
 		rType = 0;
 		vrLen = 2285;
 		vrLoc = 4046;
@@ -881,7 +929,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 397";
 		rLen = 0;
-		rLoc = 15759;
+		rLoc = 11129;
 		rType = 0;
 		vrLen = 2094;
 		vrLoc = 14754;
@@ -891,10 +939,490 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 31";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 846;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 42;
+	};
+	BFBE44DE104C4799001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 659;
+		vrLoc = 682;
+	};
+	BFBE44DF104C4799001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 48";
+		rLen = 0;
+		rLoc = 1691;
+		rType = 0;
+		vrLen = 1625;
+		vrLoc = 42;
+	};
+	BFBE44E0104C4799001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 117";
+		rLen = 3;
+		rLoc = 6017;
+		rType = 0;
+		vrLen = 2121;
+		vrLoc = 3306;
+	};
+	BFBE44E1104C49E1001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 659;
+		vrLoc = 682;
+	};
+	BFBE44E2104C49E1001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 204";
+		rLen = 0;
+		rLoc = 9174;
+		rType = 0;
+		vrLen = 1765;
+		vrLoc = 7356;
+	};
+	BFBE44E3104C49E1001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 48";
+		rLen = 0;
+		rLoc = 1691;
+		rType = 0;
+		vrLen = 1625;
+		vrLoc = 42;
+	};
+	BFBE44E4104C4BDA001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 659;
+		vrLoc = 682;
+	};
+	BFBE44E5104C4BDA001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 110";
+		rLen = 0;
+		rLoc = 5641;
+		rType = 0;
+		vrLen = 2179;
+		vrLoc = 3444;
+	};
+	BFBE44E6104C4BDA001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 48";
+		rLen = 0;
+		rLoc = 1691;
+		rType = 0;
+		vrLen = 1625;
+		vrLoc = 42;
+	};
+	BFBE44E8104C4CA6001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 659;
+		vrLoc = 682;
+	};
+	BFBE44E9104C4CA6001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 109";
+		rLen = 0;
+		rLoc = 5606;
+		rType = 0;
+		vrLen = 2159;
+		vrLoc = 3444;
+	};
+	BFBE44EA104C4CA6001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 48";
+		rLen = 0;
+		rLoc = 1691;
+		rType = 0;
+		vrLen = 1625;
+		vrLoc = 42;
+	};
+	BFBE44EB104C4DD0001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 659;
+		vrLoc = 682;
+	};
+	BFBE44EC104C4DD0001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 108";
+		rLen = 0;
+		rLoc = 5575;
+		rType = 0;
+		vrLen = 2152;
+		vrLoc = 3454;
+	};
+	BFBE44ED104C4DD0001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE44F1104C4FF6001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE44F2104C4FF6001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 250";
+		rLen = 0;
+		rLoc = 10453;
+		rType = 0;
+		vrLen = 2433;
+		vrLoc = 9857;
+	};
+	BFBE44F3104C4FF6001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE44F5104C5224001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE44F6104C5224001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 73";
+		rLen = 0;
+		rLoc = 1283;
+		rType = 0;
+		vrLen = 1631;
+		vrLoc = 1870;
+	};
+	BFBE44F7104C5224001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE44F9104C523C001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE44FA104C523C001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE44FB104C523C001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 73";
+		rLen = 0;
+		rLoc = 1283;
+		rType = 0;
+		vrLen = 2357;
+		vrLoc = 1904;
+	};
+	BFBE44FE104C5284001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE44FF104C5284001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE4500104C5284001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 283";
+		rLen = 0;
+		rLoc = 11265;
+		rType = 0;
+		vrLen = 2500;
+		vrLoc = 9902;
+	};
+	BFBE4502104C53C9001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE4503104C53C9001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE4504104C53C9001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 276";
+		rLen = 0;
+		rLoc = 10765;
+		rType = 0;
+		vrLen = 2526;
+		vrLoc = 9902;
+	};
+	BFBE4507104C5441001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE4508104C5441001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE4509104C5441001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 275";
+		rLen = 0;
+		rLoc = 10764;
+		rType = 0;
+		vrLen = 2503;
+		vrLoc = 10090;
+	};
+	BFBE450C104C5548001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE450D104C5548001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 278";
+		rLen = 21;
+		rLoc = 11008;
+		rType = 0;
+		vrLen = 2511;
+		vrLoc = 10090;
+	};
+	BFBE450E104C5548001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1709;
+		vrLoc = 42;
+	};
+	BFBE4512104C5866001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE4513104C5866001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 278";
+		rLen = 21;
+		rLoc = 11008;
+		rType = 0;
+		vrLen = 2461;
+		vrLoc = 10090;
+	};
+	BFBE4514104C5866001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1718;
+		vrLoc = 24;
+	};
+	BFBE4518104C5984001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE4519104C5984001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 278";
+		rLen = 5;
+		rLoc = 11078;
+		rType = 0;
+		vrLen = 2170;
+		vrLoc = 9776;
+	};
+	BFBE451A104C5984001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1718;
+		vrLoc = 24;
+	};
+	BFBE451B104C59EF001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 682;
+	};
+	BFBE451C104C59EF001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1718;
+		vrLoc = 24;
+	};
+	BFBE451D104C59EF001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 121";
+		rLen = 0;
+		rLoc = 4931;
+		rType = 0;
+		vrLen = 2208;
+		vrLoc = 3306;
+	};
+	BFBE451F104C5ABA001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 643;
+		vrLoc = 682;
+	};
+	BFBE4520104C5ABA001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
+		name = "mwMaskStimulus.cpp: 44";
+		rLen = 1186;
+		rLoc = 1283;
+		rType = 0;
+		vrLen = 2586;
+		vrLoc = 2466;
+	};
+	BFBE4521104C5ABA001285D7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
+		name = "mwMaskStimulus.h: 27";
+		rLen = 0;
+		rLoc = 572;
+		rType = 0;
+		vrLen = 1718;
+		vrLoc = 24;
 	};
 	BFFB38F91046DF0E00D37348 /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -925,7 +1453,7 @@
 		isa = PBXTextBookmark;
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 13";
-		rLen = 693;
+		rLen = 641;
 		rLoc = 196;
 		rType = 0;
 		vrLen = 224;
@@ -946,7 +1474,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 22";
 		rLen = 0;
-		rLoc = 808;
+		rLoc = 801;
 		rType = 0;
 		vrLen = 510;
 		vrLoc = 376;
@@ -1104,7 +1632,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 22";
 		rLen = 0;
-		rLoc = 808;
+		rLoc = 801;
 		rType = 0;
 		vrLen = 931;
 		vrLoc = 145;
@@ -1134,7 +1662,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 22";
 		rLen = 0;
-		rLoc = 808;
+		rLoc = 801;
 		rType = 0;
 		vrLen = 631;
 		vrLoc = 889;
@@ -1144,7 +1672,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 39";
 		rLen = 0;
-		rLoc = 1642;
+		rLoc = 1691;
 		rType = 0;
 		vrLen = 1026;
 		vrLoc = 368;
@@ -1164,7 +1692,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 152";
 		rLen = 0;
-		rLoc = 15382;
+		rLoc = 10669;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 3807;
@@ -1210,8 +1738,8 @@
 		isa = PBXTextBookmark;
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 156";
-		rLen = 145;
-		rLoc = 15624;
+		rLen = 147;
+		rLoc = 10992;
 		rType = 0;
 		vrLen = 1217;
 		vrLoc = 4528;
@@ -1238,7 +1766,7 @@
 		comments = "error: cannot convert 'fftwf_plan_s*' to 'fftw_plan_s*' for argument '1' to 'void fftw_execute(fftw_plan_s*)'";
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		rLen = 1;
-		rLoc = 399;
+		rLoc = 283;
 		rType = 1;
 	};
 	BFFB3BA6104871E400D37348 /* PBXTextBookmark */ = {
@@ -1256,7 +1784,7 @@
 		comments = "error:   initializing argument 1 of 'GLint gluBuild2DMipmaps(GLenum, GLint, GLsizei, GLsizei, GLenum, GLenum, const void*)'";
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		rLen = 1;
-		rLoc = 259;
+		rLoc = 184;
 		rType = 1;
 	};
 	BFFB3D951049F0CE00D37348 /* PBXTextBookmark */ = {
@@ -1274,7 +1802,7 @@
 		fRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */;
 		name = "mwMaskStimulus.cpp: 100";
 		rLen = 0;
-		rLoc = 3770;
+		rLoc = 3367;
 		rType = 0;
 		vrLen = 2304;
 		vrLoc = 3357;
@@ -1284,7 +1812,7 @@
 		fRef = 5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */;
 		name = "mwMaskStimulus.h: 30";
 		rLen = 0;
-		rLoc = 718;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 1655;
 		vrLoc = 55;

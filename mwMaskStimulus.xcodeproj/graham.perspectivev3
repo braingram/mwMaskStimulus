@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>BFBE44DB104C43FD001285D7</string>
+						<string>BFBE4520104C5ABA001285D7</string>
 						<key>history</key>
 						<array>
 							<string>BFFB3D961049F0CE00D37348</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>BFBE44DC104C43FD001285D7</string>
+						<string>BFBE4521104C5ABA001285D7</string>
 						<key>history</key>
 						<array>
 							<string>BFFB3D971049F0CE00D37348</string>
@@ -358,7 +358,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>0</integer>
+									<integer>15</integer>
+									<integer>14</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -407,7 +408,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>BFBE44DA104C43FD001285D7</string>
+										<string>BFBE451F104C5ABA001285D7</string>
 										<key>history</key>
 										<array>
 											<string>BFFB3AC910481DFA00D37348</string>
@@ -467,7 +468,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {377, -27}}</string>
+										<string>{{10, 27}, {798, 283}}</string>
+										<key>RubberWindowFrame</key>
+										<string>-1153 -107 1005 713 -1920 -300 1920 1200 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -522,8 +525,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {798, 283}}</string>
-										<key>RubberWindowFrame</key>
-										<string>-1153 -107 1005 713 -1920 -300 1920 1200 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -739,8 +740,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/graham/Developer/mwMaskStimulus/mwMaskStimulus.xcodeproj</string>
 		<string>BFFB3A22104728D800D37348</string>
+		<string>/Users/graham/Developer/mwMaskStimulus/mwMaskStimulus.xcodeproj</string>
 		<string>BFFB3A1C104728D800D37348</string>
 	</array>
 	<key>WindowString</key>

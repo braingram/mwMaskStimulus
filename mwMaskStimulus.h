@@ -24,6 +24,7 @@ class mwMaskStimulus : public ImageStimulus{
 protected:
     shared_ptr<Variable> random_seed;
     float *image_data; // of size 4 * height * width (for RGBA Float image format)
+    //float *mask_data; // of size 4 * height * width (for RGBA Float image format)
     float *(channel_modulus[4]); // of size height * width * 3 ordered RGB
     //fftwf_complex (*channel_fft)[3];
     //fftwf_complex *fft_phase;
@@ -46,7 +47,6 @@ public:
     
     virtual void makeMask(StimulusDisplay *display);
     virtual void load(StimulusDisplay *display);
-//    virtual void drawInUnitSquare(StimulusDisplay *display);
     virtual Data getCurrentAnnounceDrawData();
 };
 
