@@ -14,6 +14,7 @@
 		BFBFB0D610446C180019216B /* MonkeyWorksCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBFB0D510446C180019216B /* MonkeyWorksCore.framework */; };
 		BFFB3A66104752B400D37348 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFB3A65104752B400D37348 /* OpenGL.framework */; };
 		BFFB3AAB104817CD00D37348 /* MWLibrary.xml in Resources */ = {isa = PBXBuildFile; fileRef = BFFB3AAA104817CD00D37348 /* MWLibrary.xml */; };
+		BFFB3BE310487AE300D37348 /* libfftw3f.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFB3BE210487AE300D37348 /* libfftw3f.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		BFBFB0D510446C180019216B /* MonkeyWorksCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MonkeyWorksCore.framework; path = /Library/Frameworks/MonkeyWorksCore.framework; sourceTree = "<absolute>"; };
 		BFFB3A65104752B400D37348 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		BFFB3AAA104817CD00D37348 /* MWLibrary.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MWLibrary.xml; sourceTree = "<group>"; };
+		BFFB3BE210487AE300D37348 /* libfftw3f.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfftw3f.dylib; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +44,7 @@
 			files = (
 				BFBFB0D610446C180019216B /* MonkeyWorksCore.framework in Frameworks */,
 				BFFB3A66104752B400D37348 /* OpenGL.framework in Frameworks */,
+				BFFB3BE310487AE300D37348 /* libfftw3f.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +68,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BFFB3BE210487AE300D37348 /* libfftw3f.dylib */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
 			);
@@ -221,7 +225,7 @@
 		1DEB913B08733D840010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -230,13 +234,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mwMaskStimulus_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
 					"/Library/Application\\ Support/MonkeyWorks/Developer/include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib/**",
 					"/Library/Application\\ Support/MonkeyWorks/Developer/lib/**",
+					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = mwMaskStimulus;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -245,19 +253,23 @@
 		1DEB913C08733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mwMaskStimulus_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
 					"/Library/Application\\ Support/MonkeyWorks/Developer/include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib/**",
 					"/Library/Application\\ Support/MonkeyWorks/Developer/lib/**",
+					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = mwMaskStimulus;
 				WRAPPER_EXTENSION = bundle;
 			};
