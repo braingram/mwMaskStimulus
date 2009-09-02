@@ -22,16 +22,20 @@ using namespace mw;
 class mwMaskStimulus : public ImageStimulus{
 
 protected:
-    shared_ptr<Variable> random_seed;
+    //shared_ptr<Variable> random_seed;
     float *image_data; // of size 4 * height * width (for RGBA Float image format)
     //float *mask_data; // of size 4 * height * width (for RGBA Float image format)
     float *(channel_modulus[4]); // of size height * width * 3 ordered RGB
     //fftwf_complex (*channel_fft)[3];
     //fftwf_complex *fft_phase;
     //fftwf_complex *fft_mask;
-    Lockable* lock;
+    //Lockable* lock;
+    boost::mt19937 rng;
+    boost::uniform_real<> phase_distribution;
+    boost::variate_generator<boost::mt19937, boost::uniform_real<> > random_phase_gen;
     //fftwf_plan fft_mask_plan[3];
     //fftwf_plan ifft_mask_plan[3];
+    bool imageLoaded;
 public:
 	mwMaskStimulus(std::string _tag, std::string filename,
                                         shared_ptr<Variable> _xoffset,
@@ -40,13 +44,14 @@ public:
                                         shared_ptr<Variable> _yscale,
                                         shared_ptr<Variable> _rot,
                                         shared_ptr<Variable> _alpha,
-                                        shared_ptr<Variable> _random_seed);
+                                        uint32_t _random_seed);
 	mwMaskStimulus(const mwMaskStimulus &tocopy);
 	~mwMaskStimulus();
-    shared_ptr<Variable> getRandomSeed();
+    //shared_ptr<Variable> getRandomSeed();
     
     virtual void makeMask(StimulusDisplay *display);
     virtual void load(StimulusDisplay *display);
+    //virtual bool isLoaded();
     virtual Data getCurrentAnnounceDrawData();
 };
 

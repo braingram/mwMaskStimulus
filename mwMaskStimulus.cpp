@@ -7,6 +7,13 @@
  *
  */
 
+// done: allow setting and use of a random seed
+// done: sort out deferred loading and mask creation, 1 mask per queue and thats IT!!
+// done: double check memory management and figure out what must exist between masks
+// done: move rng to class so it exists between masks
+// TODO: add per-channel flag (so phase is generated per-channel not shared across channels)
+// TODO: figure out how to install or package fftw with this bundle
+
 #include "mwMaskStimulus.h"
 
 
@@ -17,18 +24,23 @@ mwMaskStimulus::mwMaskStimulus(std::string _tag, std::string _filename,
                                shared_ptr<Variable> _yscale,
                                shared_ptr<Variable> _rot,
                                shared_ptr<Variable> _alpha,
-                               shared_ptr<Variable> _random_seed)
-                                : ImageStimulus (_tag, _filename, _xoffset, _yoffset, _xscale, _yscale, _rot, _alpha) {
-    random_seed = _random_seed;
+                               uint32_t _random_seed)
+                                : ImageStimulus (_tag, _filename, _xoffset, _yoffset, _xscale, _yscale, _rot, _alpha),
+                                rng(_random_seed), phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
+    //random_seed = _random_seed;
+    imageLoaded = false;
 }
 
 mwMaskStimulus::mwMaskStimulus(const mwMaskStimulus &tocopy)
-    :ImageStimulus((ImageStimulus&) tocopy) {
-        random_seed = tocopy.random_seed;
+    :ImageStimulus((ImageStimulus&) tocopy),
+    phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
+        //random_seed = tocopy.random_seed;
+        // bjg: do I want to copy the imageLoaded variable or just set it to false?
+        imageLoaded = false;
 }
 
 mwMaskStimulus::~mwMaskStimulus(){
-    if(loaded){
+    if(imageLoaded){
         free(image_data);
         for (int i = 0; i < 4; i++) {
             free(channel_modulus[i]);
@@ -37,9 +49,15 @@ mwMaskStimulus::~mwMaskStimulus(){
     }
 }
 
-shared_ptr<Variable> mwMaskStimulus::getRandomSeed() {
-    return random_seed;
-}
+//shared_ptr<Variable> mwMaskStimulus::getRandomSeed() {
+//    return random_seed;
+//}
+
+//bool mwMaskStimulus::isLoaded() {
+//    mprintf("--Mask-- In isLoaded method");
+//    // bjg: this method is hacked to force load to be called every time a stimulus is queued
+//    return false;
+//}
 
 //void printStats(float* things, int N) {
 //    float max = things[0];
@@ -74,18 +92,12 @@ shared_ptr<Variable> mwMaskStimulus::getRandomSeed() {
 //}
 
 void mwMaskStimulus::makeMask(StimulusDisplay *display) {
-    if(!loaded){
+    if(!imageLoaded){
         mprintf("Attempted to make mask when image was not loaded, no mask made");
         return;
     }
     
-    // generate random phase
-    boost::mt19937 rng;
-    // !!! TODO !!! should I use an existing pi value?
-    boost::uniform_real<> phase_distribution(-3.14,3.14);
-    //boost::uniform_real<> phase_distribution(0.0,6.2831853071795862);
-    // make generator, which when called, generates a random number between 0 and 1.0
-    boost::variate_generator<boost::mt19937, boost::uniform_real<> > random_phase_gen(rng,phase_distribution);
+    mprintf("==========Making mask for================= %s",tag.c_str());
     // allocate space for random phase !!! possibly move this to load !!!
     fftwf_complex *random_phase = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
     // use the generator to fill the phase array
@@ -96,6 +108,7 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
         random_phase[i][1] = imag(temp_phase);
         //random_phase[i] = reinterpret_cast<fftwf_complex>(exp(temp_phase));
     }
+    mprintf(" %f %f",random_phase[0][0],random_phase[0][1]);
     // make space for mask
     float *mask_data = (float*)calloc(height*width*4,sizeof(float));
     // combine with modulus and do inverse
@@ -197,7 +210,8 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
 }
 
 void mwMaskStimulus::load(StimulusDisplay *display) {
-    if(loaded){
+    mprintf("==========In mask::load for ================= %s",tag.c_str());
+    if(imageLoaded){
         // if stimulus is already loaded, just generate a new mask
         makeMask(display);
 		return;
@@ -214,11 +228,16 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
 	}
 	fclose(test);
     
-    // start up Devil
-    ilInit();
-    ilutInit(); // !!! necessary?
-    ilutRenderer(ILUT_OPENGL); // !!! necessary?
-    ilutEnable(ILUT_OPENGL_CONV); // !!! necessary?
+    if( !OpenGLImageLoader::initialized) {
+        mprintf("--Mask-- starting Devil"); std::cout << "--Mask starting Devil\n";
+        // start up Devil
+        ilInit();
+        // start up OpenGL
+        ilutInit(); // !!! necessary?
+        ilutRenderer(ILUT_OPENGL); // !!! necessary?
+        ilutEnable(ILUT_OPENGL_CONV); // !!! necessary?
+        mprintf("--Mask-- Devil started"); std::cout << "--Mask Devil started\n";
+    }
     
     //load image from FILE
     GLuint texture_map;
@@ -302,9 +321,10 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         //printStats(channel_modulus[i],((height*width)/2+1));
     }
     
+    mprintf("--Mask-- moving mask"); std::cout << "--Mask moving mask\n";
     // move 'masks' (original images right now) to gpu
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     for(int i = 0; i < display->getNContexts(); i++){
 		display->setCurrent(i);
         
@@ -343,7 +363,10 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         return;
     }
     
-    loaded = true;
+    //loaded = true;
+    loaded = false;
+    imageLoaded = true;
+    //loaded = false;
     
     // make mask
     makeMask(display);

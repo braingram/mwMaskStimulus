@@ -64,7 +64,16 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
     out << seed;
     seedStr = out.str();
     
-    shared_ptr<Variable> random_seed = reg->getVariable(parameters["random_seed"], seedStr);
+    // get random seed from 
+    //shared_ptr<Variable> random_seed = reg->getVariable(parameters["random_seed"], seedStr);
+    // TODO: set this to some default but unique value, like the current time in microseconds
+    uint32_t random_seed = seed;
+    if(!parameters["random_seed"].empty()){
+        random_seed = (uint32_t)(reg->getNumber(parameters["random_seed"]).getFloat());
+        // TODO error checking
+        mprintf("Found random_seed of %i",random_seed);
+    }
+    //long random_seed = reg->getLong(parameters["random_seed"], seedStr);
 	// !!! check this next one !!!
     boost::filesystem::path full_path = reg->getPath(parameters["working_path"], parameters["path"]);
     
@@ -114,10 +123,11 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
                                                                                               random_seed));
 	//shared_ptr <mwMaskStimulus> newMaskStimulus = shared_ptr<mwMaskStimulus>(new mwMaskStimulus(tagname, another_attribute));
 
-    bool deferred = false;
-    if(!parameters["deferred"].empty()){
-        deferred = reg->getBoolean(parameters["deferred"]);
-    }
+    bool deferred = true;
+    // bjg: do not read the deferred varialbe from XML, it should always be true
+    //if(!parameters["deferred"].empty()){
+    //    deferred = reg->getBoolean(parameters["deferred"]);
+    //}
     
     // TODO: deferred load?
     if(!deferred){
