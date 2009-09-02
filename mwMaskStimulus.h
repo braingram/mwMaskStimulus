@@ -17,12 +17,19 @@
 #include <fftw3.h>
 #include <boost/random.hpp>
 
+//#define STIM_SEED "seed"
+//#define STIM_PER_CHAN "per_chan"
+
 using namespace mw;
 
 class mwMaskStimulus : public ImageStimulus{
 
 protected:
     //shared_ptr<Variable> random_seed;
+    shared_ptr<Variable> random_seed;
+    //bool random_phase_per_channel;
+    shared_ptr<Variable> random_phase_per_channel;
+    //uint32_t random_seed;
     float *image_data; // of size 4 * height * width (for RGBA Float image format)
     //float *mask_data; // of size 4 * height * width (for RGBA Float image format)
     float *(channel_modulus[4]); // of size height * width * 3 ordered RGB
@@ -44,7 +51,8 @@ public:
                                         shared_ptr<Variable> _yscale,
                                         shared_ptr<Variable> _rot,
                                         shared_ptr<Variable> _alpha,
-                                        uint32_t _random_seed);
+                                        shared_ptr<Variable> _random_seed,
+                                        shared_ptr<Variable> _random_phase_per_channel);
 	mwMaskStimulus(const mwMaskStimulus &tocopy);
 	~mwMaskStimulus();
     //shared_ptr<Variable> getRandomSeed();

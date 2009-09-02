@@ -56,22 +56,35 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
     // alpha_multiplier has a default value of 1.0
     shared_ptr<Variable> alpha_multiplier = reg->getVariable(parameters["alpha_multiplier"], std::string("1.0"));
     
-    // generate default seed
-    // BJG: this is sort of a bad way to generate the seed as it only changes every second
-    uint32_t seed = static_cast<unsigned int>(std::time(0));
-    std::stringstream out;
-    std::string seedStr;
-    out << seed;
-    seedStr = out.str();
-    
+//    // generate default seed
+//    shared_ptr<Variable> random_seed = reg->getVariable(parameters.find("random_seed")->second);
+//    std::cout << random_seed << "\n";
+//    if (random_seed == 0) {
+//        // no random_seed was defined, so generate one
+//        // BJG: this is sort of a bad way to generate the seed as it only changes every second 
+//        // TODO: set this to some default but unique value, like the current time in microseconds
+//        uint32_t default_seed = static_cast<unsigned int>(std::time(0));
+//        random_seed->setValue(Data((long)default_seed));
+//    }
     // get random seed from 
     //shared_ptr<Variable> random_seed = reg->getVariable(parameters["random_seed"], seedStr);
-    // TODO: set this to some default but unique value, like the current time in microseconds
-    uint32_t random_seed = seed;
+    
+    uint32_t default_seed = static_cast<unsigned int>(std::time(0));
+    shared_ptr<Variable> random_seed(new ConstantVariable(Data((long)default_seed))); 
     if(!parameters["random_seed"].empty()){
-        random_seed = (uint32_t)(reg->getNumber(parameters["random_seed"]).getFloat());
+        random_seed = reg->getVariable(parameters.find("random_seed")->second);
+        //random_seed = (uint32_t)(reg->getNumber(parameters["random_seed"]).getFloat());
         // TODO error checking
-        mprintf("Found random_seed of %i",random_seed);
+        mprintf("Found random_seed of %i",random_seed->getValue().getInteger());
+    }
+    
+//    shared_ptr<Variable> random_phase_per_channel = reg->getVariable(parameters.find("random_phase_per_channel")->second);
+//    if (random_phase_per_channel == 0) {
+//        random_phase_per_channel->setValue(Data(false));
+//    }
+    shared_ptr<Variable> random_phase_per_channel(new ConstantVariable(Data(false)));
+    if (!parameters["random_phase_per_channel"].empty()) {
+        random_phase_per_channel = reg->getVariable(parameters.find("random_seed")->second);
     }
     //long random_seed = reg->getLong(parameters["random_seed"], seedStr);
 	// !!! check this next one !!!
@@ -95,6 +108,8 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
 	if(boost::filesystem::is_directory(full_path)) {
 		throw InvalidReferenceException(parameters.find("reference_id")->second, "path", parameters.find("path")->second);
 	}
+    
+    // TODO: check seed and phase_per_channel
 	
 	if(GlobalCurrentExperiment == NULL) {
 		throw SimpleException("no experiment currently defined");		
@@ -120,7 +135,8 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
                                                                                               y_size,
                                                                                               rotation,
                                                                                               alpha_multiplier,
-                                                                                              random_seed));
+                                                                                              random_seed,
+                                                                                              random_phase_per_channel));
 	//shared_ptr <mwMaskStimulus> newMaskStimulus = shared_ptr<mwMaskStimulus>(new mwMaskStimulus(tagname, another_attribute));
 
     bool deferred = true;

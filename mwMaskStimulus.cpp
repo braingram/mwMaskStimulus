@@ -11,7 +11,12 @@
 // done: sort out deferred loading and mask creation, 1 mask per queue and thats IT!!
 // done: double check memory management and figure out what must exist between masks
 // done: move rng to class so it exists between masks
-// TODO: add per-channel flag (so phase is generated per-channel not shared across channels)
+// done: add per-channel flag (so phase is generated per-channel not shared across channels)
+// done: move seed and per-channel flag to xml
+//      keys:
+//          random_seed
+//          random_phase_per_channel
+// TODO: add type and rang checking for random_seed and random_phase_per_channel
 // TODO: figure out how to install or package fftw with this bundle
 
 #include "mwMaskStimulus.h"
@@ -24,11 +29,13 @@ mwMaskStimulus::mwMaskStimulus(std::string _tag, std::string _filename,
                                shared_ptr<Variable> _yscale,
                                shared_ptr<Variable> _rot,
                                shared_ptr<Variable> _alpha,
-                               uint32_t _random_seed)
+                               shared_ptr<Variable> _random_seed,
+                               shared_ptr<Variable> _random_phase_per_channel)
                                 : ImageStimulus (_tag, _filename, _xoffset, _yoffset, _xscale, _yscale, _rot, _alpha),
-                                rng(_random_seed), phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
-    //random_seed = _random_seed;
+                                rng(_random_seed->getValue().getBool()), phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
+    random_seed = _random_seed;
     imageLoaded = false;
+    random_phase_per_channel = _random_phase_per_channel;
 }
 
 mwMaskStimulus::mwMaskStimulus(const mwMaskStimulus &tocopy)
@@ -36,7 +43,9 @@ mwMaskStimulus::mwMaskStimulus(const mwMaskStimulus &tocopy)
     phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
         //random_seed = tocopy.random_seed;
         // bjg: do I want to copy the imageLoaded variable or just set it to false?
+        random_seed = tocopy.random_seed;
         imageLoaded = false;
+        random_phase_per_channel = tocopy.random_phase_per_channel;
 }
 
 mwMaskStimulus::~mwMaskStimulus(){
@@ -97,18 +106,21 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
         return;
     }
     
-    mprintf("==========Making mask for================= %s",tag.c_str());
+    //mprintf("==========Making mask for================= %s",tag.c_str());
     // allocate space for random phase !!! possibly move this to load !!!
     fftwf_complex *random_phase = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
     // use the generator to fill the phase array
-    for (int i = 0; i < (height * width); i++) {
-        complex<float> temp_phase(0.0,random_phase_gen());
-        temp_phase = exp(temp_phase);
-        random_phase[i][0] = real(temp_phase);
-        random_phase[i][1] = imag(temp_phase);
-        //random_phase[i] = reinterpret_cast<fftwf_complex>(exp(temp_phase));
+    if (!(random_phase_per_channel->getValue().getBool())) {
+        mprintf("--Mask-- Generating phase for ALL channels");
+        for (int i = 0; i < (height * width); i++) {
+            complex<float> temp_phase(0.0,random_phase_gen());
+            temp_phase = exp(temp_phase);
+            random_phase[i][0] = real(temp_phase);
+            random_phase[i][1] = imag(temp_phase);
+            //random_phase[i] = reinterpret_cast<fftwf_complex>(exp(temp_phase));
+        }
+        mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
     }
-    mprintf(" %f %f",random_phase[0][0],random_phase[0][1]);
     // make space for mask
     float *mask_data = (float*)calloc(height*width*4,sizeof(float));
     // combine with modulus and do inverse
@@ -117,6 +129,17 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
         // make space for fftw input !!! possibly move this out of the loop? !!!
         //fftwf_complex *in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
         fftwf_complex *in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * ((height * width)/ 2 + 1));
+        
+        if (random_phase_per_channel->getValue().getBool()) {
+            mprintf("--Mask-- Generating phase for channel %i",i);
+            for (int j = 0; j < (height * width); j++) {
+                complex<float> temp_phase(0.0,random_phase_gen());
+                temp_phase = exp(temp_phase);
+                random_phase[j][0] = real(temp_phase);
+                random_phase[j][1] = imag(temp_phase);
+            }
+            mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
+        }
         // fill input
         //for (int j = 0; j < (height * width); j++) {
         for (int j = 0; j < ((height * width)/2 + 1); j++) {
@@ -210,7 +233,7 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
 }
 
 void mwMaskStimulus::load(StimulusDisplay *display) {
-    mprintf("==========In mask::load for ================= %s",tag.c_str());
+    //mprintf("==========In mask::load for ================= %s",tag.c_str());
     if(imageLoaded){
         // if stimulus is already loaded, just generate a new mask
         makeMask(display);
@@ -376,7 +399,7 @@ Data mwMaskStimulus::getCurrentAnnounceDrawData() {
     
     //mprintf("getting announce DRAW data for image stimulus %s",tag );
     
-    Data announceData(M_DICTIONARY, 9);
+    Data announceData(M_DICTIONARY, 11);
     announceData.addElement(STIM_NAME,tag);        // char
     announceData.addElement(STIM_ACTION,STIM_ACTION_DRAW);
     announceData.addElement(STIM_TYPE,STIM_TYPE_IMAGE);
@@ -386,6 +409,9 @@ Data mwMaskStimulus::getCurrentAnnounceDrawData() {
     announceData.addElement(STIM_SIZEX,last_sizex);  
     announceData.addElement(STIM_SIZEY,last_sizey);  
     announceData.addElement(STIM_ROT,last_rot);
+    //
+    announceData.addElement("random_seed",random_seed->getValue());
+    announceData.addElement("random_phase_per_channel",random_phase_per_channel->getValue());
     //TODO    announceData.addElement(STIM_ALPHA,last_alpha);  
     
     return (announceData);
