@@ -16,7 +16,7 @@
 //      keys:
 //          random_seed
 //          random_phase_per_channel
-// TODO: add type and rang checking for random_seed and random_phase_per_channel
+// TODO: add type and range checking for random_seed and random_phase_per_channel
 // TODO: figure out how to install or package fftw with this bundle
 
 #include "mwMaskStimulus.h"

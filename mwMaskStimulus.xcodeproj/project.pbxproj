@@ -11,7 +11,7 @@
 		5CF9AEBC0FD5795C00F405F6 /* mwMaskStimulusPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9AEB90FD5795C00F405F6 /* mwMaskStimulusPlugin.cpp */; };
 		5CFE591A0F571B15000C7F30 /* mwMaskStimulus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		BFBE4560104C6BFC001285D7 /* libfftw3f.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBE455F104C6BFC001285D7 /* libfftw3f.dylib */; };
+		BF2552391051B66000A7BD98 /* libfftw3f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2552381051B66000A7BD98 /* libfftw3f.a */; };
 		BFBFB0D610446C180019216B /* MonkeyWorksCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBFB0D510446C180019216B /* MonkeyWorksCore.framework */; };
 		BFFB3A66104752B400D37348 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFB3A65104752B400D37348 /* OpenGL.framework */; };
 		BFFB3AAB104817CD00D37348 /* MWLibrary.xml in Resources */ = {isa = PBXBuildFile; fileRef = BFFB3AAA104817CD00D37348 /* MWLibrary.xml */; };
@@ -30,7 +30,7 @@
 		5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mwMaskStimulus.cpp; sourceTree = SOURCE_ROOT; };
 		8D5B49B6048680CD000E48DA /* mwMaskStimulus.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mwMaskStimulus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFBE455F104C6BFC001285D7 /* libfftw3f.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfftw3f.dylib; sourceTree = "<group>"; };
+		BF2552381051B66000A7BD98 /* libfftw3f.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfftw3f.a; sourceTree = "<group>"; };
 		BFBFB0D510446C180019216B /* MonkeyWorksCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MonkeyWorksCore.framework; path = /Library/Frameworks/MonkeyWorksCore.framework; sourceTree = "<absolute>"; };
 		BFFB3A65104752B400D37348 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		BFFB3AAA104817CD00D37348 /* MWLibrary.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MWLibrary.xml; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 			files = (
 				BFBFB0D610446C180019216B /* MonkeyWorksCore.framework in Frameworks */,
 				BFFB3A66104752B400D37348 /* OpenGL.framework in Frameworks */,
-				BFBE4560104C6BFC001285D7 /* libfftw3f.dylib in Frameworks */,
+				BF2552391051B66000A7BD98 /* libfftw3f.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +68,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				BFBE455F104C6BFC001285D7 /* libfftw3f.dylib */,
+				BFFB3A65104752B400D37348 /* OpenGL.framework */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
 			);
@@ -94,7 +94,6 @@
 				5CF9AEBA0FD5795C00F405F6 /* mwMaskStimulusPlugin.h */,
 				5CFE59180F571B15000C7F30 /* mwMaskStimulus.h */,
 				5CFE59190F571B15000C7F30 /* mwMaskStimulus.cpp */,
-				BFFB3A65104752B400D37348 /* OpenGL.framework */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -102,6 +101,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF2552381051B66000A7BD98 /* libfftw3f.a */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -240,12 +240,12 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
-					"/usr/local/lib/**",
 					"/Library/Application\\ Support/MonkeyWorks/Developer/lib/**",
 					"\"$(SRCROOT)\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-LResources";
 				PRODUCT_NAME = mwMaskStimulus;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -265,12 +265,12 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
-					"/usr/local/lib/**",
 					"/Library/Application\\ Support/MonkeyWorks/Developer/lib/**",
 					"\"$(SRCROOT)\"",
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-LResources";
 				PRODUCT_NAME = mwMaskStimulus;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
