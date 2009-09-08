@@ -202,6 +202,46 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
+				<string>BFA9ED861055BD330097474A</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>mwMaskStimulus.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>BFA9ED871055BD330097474A</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>mwMaskStimulus.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>BF957E5E1056ECC400134B1F</string>
+						<key>history</key>
+						<array>
+							<string>BF593DA71056EBBD00730F05</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {821, 708}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 129 821 749 0 0 1440 878 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
 				<string>BFB60463104D63EE00008CF1</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>mwMaskStimulus.h</string>
@@ -216,10 +256,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>BFBB98D71055BF7800C6813F</string>
+						<string>BF957E5F1056ECC400134B1F</string>
 						<key>history</key>
 						<array>
-							<string>BFA9ED851055BD330097474A</string>
+							<string>BF593DA81056EBBD00730F05</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -242,24 +282,24 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>BFA9ED861055BD330097474A</string>
+				<string>BF55C9051056EB9E00FD07BB</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>mwMaskStimulus.cpp</string>
+				<string>StandardStimuli.cpp</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>BFA9ED871055BD330097474A</string>
+						<string>BF55C9061056EB9E00FD07BB</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>mwMaskStimulus.cpp</string>
+						<string>StandardStimuli.cpp</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>BFBB98D81055BF7800C6813F</string>
+						<string>BF957E601056ECC400134B1F</string>
 						<key>history</key>
 						<array>
-							<string>BFA9ED881055BD330097474A</string>
+							<string>BF593DA91056EBBD00730F05</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -271,11 +311,51 @@
 			<key>Geometry</key>
 			<dict>
 				<key>Frame</key>
-				<string>{{0, 20}, {821, 708}}</string>
+				<string>{{0, 20}, {1211, 697}}</string>
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>15 129 821 749 0 0 1440 878 </string>
+				<string>-1830 -3 1211 738 -1920 -300 1920 1200 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>BF55C90B1056EB9E00FD07BB</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>StandardStimuli.h</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>BF55C90C1056EB9E00FD07BB</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>StandardStimuli.h</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>BF957E621056ECC400134B1F</string>
+						<key>history</key>
+						<array>
+							<string>BF593DAB1056EBBD00730F05</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1211, 697}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>-1287 -148 1211 738 -1920 -300 1920 1200 </string>
 			</dict>
 		</dict>
 	</array>
@@ -311,6 +391,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -391,14 +473,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>BFFB38F31046DF0E00D37348</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>mwMaskStimulusFactory.cpp</string>
+								<string>mwMaskStimulus.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -406,11 +486,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>BFFB38F41046DF0E00D37348</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>mwMaskStimulusFactory.cpp</string>
+										<string>mwMaskStimulus.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>BFBB98D31055BF7800C6813F</string>
+										<string>BF957E5A1056ECC400134B1F</string>
 										<key>history</key>
 										<array>
 											<string>BFFB3BA4104871E400D37348</string>
@@ -420,10 +500,10 @@
 											<string>BFDF439D104F0AB600CCB41B</string>
 											<string>BFA88F231055660B00817560</string>
 											<string>BFA88F251055660B00817560</string>
-											<string>BFA9ED781055BD330097474A</string>
 											<string>BFA9ED791055BD330097474A</string>
 											<string>BFA9ED7A1055BD330097474A</string>
-											<string>BFA9ED811055BD330097474A</string>
+											<string>BF55C8FC1056EB9E00FD07BB</string>
+											<string>BF593DA61056EBBD00730F05</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -560,11 +640,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>BFBB98D41055BF7800C6813F</string>
+				<string>BF957E5B1056ECC400134B1F</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>BFBB98D51055BF7800C6813F</string>
+				<string>BF957E5C1056ECC400134B1F</string>
 				<string>BFFB38F31046DF0E00D37348</string>
-				<string>BFBB98D61055BF7800C6813F</string>
+				<string>BF957E5D1056ECC400134B1F</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -748,9 +828,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>BF55C90B1056EB9E00FD07BB</string>
+		<string>BF55C9051056EB9E00FD07BB</string>
+		<string>BFB60463104D63EE00008CF1</string>
 		<string>/Users/graham/Developer/mwMaskStimulus/mwMaskStimulus.xcodeproj</string>
 		<string>BFA9ED861055BD330097474A</string>
-		<string>BFB60463104D63EE00008CF1</string>
 	</array>
 	<key>WindowString</key>
 	<string>-1241 -66 1229 874 -1920 -300 1920 1200 </string>

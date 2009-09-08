@@ -194,8 +194,11 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
     for (int i = 0; i < 3; i++) {
         
         // make space for fftw input !!! possibly move this out of the loop? !!!
-        //fftwf_complex *in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
-        fftwf_complex *in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * ((height * width)/ 2 + 1));
+        fftwf_complex *fft_in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
+        //fftwf_complex *in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * ((height * width)/ 2 + 1));
+        fftwf_complex *fft_out = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
+        // making the plan fubars the input
+        fftwf_plan fft_mask_plan = fftwf_plan_dft_2d(height, width, fft_in, fft_out, FFTW_BACKWARD, FFTW_ESTIMATE);
         
         if (random_phase_per_channel->getValue().getBool()) {
             //mprintf("--Mask-- Generating phase for channel %i",i);
@@ -208,32 +211,32 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
             //mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
         }
         // fill input
-        //for (int j = 0; j < (height * width); j++) {
-        for (int j = 0; j < ((height * width)/2 + 1); j++) {
+        for (int j = 0; j < (height * width); j++) {
+        //for (int j = 0; j < ((height * width)/2 + 1); j++) {
             complex<float> temp_modulus(channel_modulus[i][j],0.0);
             complex<float> temp_phase(random_phase[j][0],random_phase[j][1]);
             complex<float> temp_result;
             temp_result = temp_modulus * temp_phase;
             //in[j] = random_phase[j] * temp_modulus;
-            in[j][0] = real(temp_result);
-            in[j][1] = imag(temp_result);
+            fft_in[j][0] = real(temp_result);
+            fft_in[j][1] = imag(temp_result);
         }
         // make space for fftw output !!! possibly move this out of the loop? !!!
-        float *out = (float*) calloc(height*width,sizeof(float));
+        //float *out = (float*) calloc(height*width,sizeof(float));
         // make fftw plan !!! possibly move this out of the loop? !!!
-        // using FFTW_MEASURE overwrites whatever is in the input array
-        fftwf_plan fft_mask_plan = fftwf_plan_dft_c2r_2d(height, width, in, out, FFTW_ESTIMATE);
+        //fftwf_plan fft_mask_plan = fftwf_plan_dft_c2r_2d(height, width, in, out, FFTW_ESTIMATE);
+        
         // exectue fft
         fftwf_execute(fft_mask_plan);
         // copy out to mask_data
         for (int j = 0; j < (height * width); j++) {
             //mask_data[(j*4)+i] = out[j];
-            mask_data[(j*4)+i] = out[j]/(height * width);
+            mask_data[(j*4)+i] = fft_out[j][0]/(height * width);
         }
         
         fftwf_destroy_plan(fft_mask_plan);
-        fftwf_free(in);
-        free(out);
+        fftwf_free(fft_in);
+        fftwf_free(fft_out);
         //lock->unlock();
     }
     
@@ -384,15 +387,19 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         //printStats(channel_modulus[i],(height*width));
         // make space for fftw result
         //std::cout << "H:" << height << " W:" << width << "\n";
-        fftwf_complex *channel_fft = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
+        fftwf_complex *fft_out = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
+        fftwf_complex *fft_in = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
         //std::cout << "Making plan\n";
         //channel_fft[i] = (fftwf_complex *)fftwf_malloc(sizeof(fftwf_complex) * height * width);
         // plan fft for this channel
-        // using FFTW_MEASURE overwrites whatever is in the input array so use FFTW_ESTIMATE
         // crashes (w/KERN_INVALID_ADDRESS) if out (channel_fft) is too small
-        fftwf_plan fft_mask_plan = fftwf_plan_dft_r2c_2d(height, width, channel_modulus[i], channel_fft, FFTW_ESTIMATE);
+        //fftwf_plan fft_mask_plan = fftwf_plan_dft_2d(height, width, channel_modulus[i], channel_fft, FFTW_FORWARD, FFTW_ESTIMATE);
+        fftwf_plan fft_mask_plan = fftwf_plan_dft_2d(height, width, fft_in, fft_out, FFTW_FORWARD, FFTW_ESTIMATE);
         // need to do some paddings
-        
+        for (int j = 0; j < (height * width); j++) {
+            // fill 'real' component of fft input
+            fft_in[j][0] = channel_modulus[i][j];
+        }
         // perform fft storing output in channel_fft[i]
         //std::cout << "Executing plan\n";
         fftwf_execute(fft_mask_plan);
@@ -401,12 +408,13 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         //printStats(channel_fft,((height*width)/2 + 1));
         // calculate modulus of fft: sqrt(real ** 2 + imag ** 2)
         for (int j = 0; j < ((height * width)/2+1); j++) {
-            channel_modulus[i][j] = sqrt(channel_fft[j][0] * channel_fft[j][0] + channel_fft[j][1] * channel_fft[j][1]);
+            channel_modulus[i][j] = sqrt(fft_out[j][0] * fft_out[j][0] + fft_out[j][1] * fft_out[j][1]);
         }
         // !!! TODO !!! do I need scaling? 1/sqrt(rows * cols)
         // clean up
         fftwf_destroy_plan(fft_mask_plan);
-        fftwf_free(channel_fft);
+        fftwf_free(fft_out);
+        fftwf_free(fft_in);
         //mprintf("\t-post-modulus-");
         //printStats(channel_modulus[i],((height*width)/2+1));
     }
