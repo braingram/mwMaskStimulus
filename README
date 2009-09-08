@@ -1,0 +1,22 @@
+-- To Install --
+copy mwMaskStimulus.bundle to:
+  /Library/Application Support/Monkeyworks/Plugins/Core Plugins/
+
+-- To Use --
+Launch MWEditor and open/create an experiment
+You should see a new Stimulus in the Library window under 'Stimuli' called 'Image Mask'
+Create the 'Image Mask' as you would an 'Image Stimulus'
+  drag the 'Image Mask' library item to the experiment and drop it in the 'Stimuli'
+  select the 'New Mask' and select the image file in the Inspector window
+
+-- Notes --
+:How this plugin works:
+  When an image mask is found in the xml file, the mwMaskStimulus.load function is called. This function loads the defined image file, computes the modulus of the fourier transform of each channel (RGB) of the image, and stores these results in memory (channel_modulus).
+  When the image mask is queued, a new phase scrambled mask is created by performing an inverse fourier transform with the pre-computed modulus and a randomly generated phase.
+  The alpha channel of the image is preserved and may make this plugin act silly.
+
+:additional xml variables:
+::'random_phase_per_channel':: either YES or NO (NO is default)
+If 'random_phase_per_channel' is set to YES in the xml file, a random phase array is created for each channel. If 'random_phase_per_channel' is set to NO or is undefined in the xml file, only a single random phase array is created. Therefore if 'random_phase_per_channel' is NO (or undefined), the random number generator (of type mt19937) generates height * width numbers each time the image mask is queued. If 'random_phase_per_channel' is YES, the random number generator generates height * width * 3 numbers each time the image mask is queued.
+::'random_seed':: unsigned INT
+This INT will be used as the seed for the random number generator. If undefined, a seed will be generated based on the current time. Either way, the seed will be stored in the announce data.

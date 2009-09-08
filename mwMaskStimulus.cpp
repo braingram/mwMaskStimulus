@@ -488,7 +488,7 @@ Data mwMaskStimulus::getCurrentAnnounceDrawData() {
     announceData.addElement("random_seed",random_seed->getValue().getInteger());
     //std::cout << "AHHHHHHHHHHHHHHHHHHHHHHHHHH: " << random_phase_per_channel->getValue().getBool() << "\n";
     //std::cout << "!@#$!@#$!@#$!@#$!@#$!@#$------------ Announcing data" << random_seed->getValue().getInteger() << "\n";
-    announceData.addElement("per_channel",random_phase_per_channel->getValue().getBool());
+    announceData.addElement("random_phase_per_channel",random_phase_per_channel->getValue().getBool());
     //TODO    announceData.addElement(STIM_ALPHA,last_alpha);  
     
     return (announceData);
