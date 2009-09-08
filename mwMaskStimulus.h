@@ -53,13 +53,25 @@ public:
                                         shared_ptr<Variable> _alpha,
                                         shared_ptr<Variable> _random_seed,
                                         shared_ptr<Variable> _random_phase_per_channel);
+    // constructor for frozen clone
+    mwMaskStimulus(std::string _tag, std::string _filename,
+                   ExpandableList<GLuint> *_texture_maps,
+                   int _width,
+                   int _height,
+                   shared_ptr<Variable> _xoffset,
+                   shared_ptr<Variable> _yoffset,
+                   shared_ptr<Variable> _xscale,
+                   shared_ptr<Variable> _yscale,
+                   shared_ptr<Variable> _rot,
+                   shared_ptr<Variable> _alpha,
+                   shared_ptr<Variable> _random_seed,
+                   shared_ptr<Variable> _random_phase_per_channel);
 	mwMaskStimulus(const mwMaskStimulus &tocopy);
 	~mwMaskStimulus();
+    virtual Stimulus * frozenClone();
     //shared_ptr<Variable> getRandomSeed();
-    
     virtual void makeMask(StimulusDisplay *display);
     virtual void load(StimulusDisplay *display);
-    //virtual bool isLoaded();
     virtual Data getCurrentAnnounceDrawData();
 };
 

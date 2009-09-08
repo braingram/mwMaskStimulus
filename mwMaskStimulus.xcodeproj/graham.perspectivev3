@@ -202,46 +202,6 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>BFB60466104D63EE00008CF1</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>mwMaskStimulus.cpp</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>BFB60467104D63EE00008CF1</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>mwMaskStimulus.cpp</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>BF25522E1051B50600A7BD98</string>
-						<key>history</key>
-						<array>
-							<string>BF91D9AC1051A01500C203E7</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {821, 708}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>15 129 821 749 0 0 1440 878 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
 				<string>BFB60463104D63EE00008CF1</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>mwMaskStimulus.h</string>
@@ -256,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>BF25522F1051B50600A7BD98</string>
+						<string>BFBB98D71055BF7800C6813F</string>
 						<key>history</key>
 						<array>
-							<string>BF91D9AD1051A01500C203E7</string>
+							<string>BFA9ED851055BD330097474A</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -276,6 +236,46 @@
 				<false/>
 				<key>RubberWindowFrame</key>
 				<string>836 129 590 749 0 0 1440 878 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>BFA9ED861055BD330097474A</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>mwMaskStimulus.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>BFA9ED871055BD330097474A</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>mwMaskStimulus.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>BFBB98D81055BF7800C6813F</string>
+						<key>history</key>
+						<array>
+							<string>BFA9ED881055BD330097474A</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {821, 708}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 129 821 749 0 0 1440 878 </string>
 			</dict>
 		</dict>
 	</array>
@@ -353,13 +353,13 @@
 								<string>089C1671FE841209C02AAC07</string>
 								<string>1058C7ACFEA557BF11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>BF2552221051B40500A7BD98</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>22</integer>
-									<integer>21</integer>
+									<integer>2</integer>
+									<integer>1</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -391,6 +391,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -408,19 +410,20 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>BF25522D1051B50600A7BD98</string>
+										<string>BFBB98D31055BF7800C6813F</string>
 										<key>history</key>
 										<array>
 											<string>BFFB3BA4104871E400D37348</string>
-											<string>BFB6043D104D5EDD00008CF1</string>
 											<string>BFB60482104D69E900008CF1</string>
 											<string>BFDF4399104F0AB600CCB41B</string>
-											<string>BFDF439A104F0AB600CCB41B</string>
-											<string>BFDF439B104F0AB600CCB41B</string>
 											<string>BFDF439C104F0AB600CCB41B</string>
 											<string>BFDF439D104F0AB600CCB41B</string>
-											<string>BFDF439E104F0AB600CCB41B</string>
-											<string>BF91D9AB1051A01500C203E7</string>
+											<string>BFA88F231055660B00817560</string>
+											<string>BFA88F251055660B00817560</string>
+											<string>BFA9ED781055BD330097474A</string>
+											<string>BFA9ED791055BD330097474A</string>
+											<string>BFA9ED7A1055BD330097474A</string>
+											<string>BFA9ED811055BD330097474A</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -434,6 +437,7 @@
 											<string>BFBE4545104C68DD001285D7</string>
 											<string>BF894804104C6F0E005D638C</string>
 											<string>BFDF43A7104F0AB600CCB41B</string>
+											<string>BFA88F2B1055660B00817560</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -473,6 +477,8 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1022, 279}}</string>
+										<key>RubberWindowFrame</key>
+										<string>-1241 -66 1229 874 -1920 -300 1920 1200 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -512,8 +518,6 @@
 									<string>PBXCVSModule</string>
 								</dict>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
@@ -529,8 +533,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1022, 279}}</string>
-										<key>RubberWindowFrame</key>
-										<string>-1241 -66 1229 874 -1920 -300 1920 1200 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -558,11 +560,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>BF25520B1051B34700A7BD98</string>
+				<string>BFBB98D41055BF7800C6813F</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>BF25520C1051B34700A7BD98</string>
+				<string>BFBB98D51055BF7800C6813F</string>
 				<string>BFFB38F31046DF0E00D37348</string>
-				<string>BF25520D1051B34700A7BD98</string>
+				<string>BFBB98D61055BF7800C6813F</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -746,9 +748,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>BFB60463104D63EE00008CF1</string>
-		<string>BFB60466104D63EE00008CF1</string>
 		<string>/Users/graham/Developer/mwMaskStimulus/mwMaskStimulus.xcodeproj</string>
+		<string>BFA9ED861055BD330097474A</string>
+		<string>BFB60463104D63EE00008CF1</string>
 	</array>
 	<key>WindowString</key>
 	<string>-1241 -66 1229 874 -1920 -300 1920 1200 </string>

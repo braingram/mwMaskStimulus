@@ -17,7 +17,7 @@
 //          random_seed
 //          random_phase_per_channel
 // TODO: add type and range checking for random_seed and random_phase_per_channel
-// TODO: figure out how to install or package fftw with this bundle
+// done: figure out how to install or package fftw with this bundle
 
 #include "mwMaskStimulus.h"
 
@@ -32,9 +32,32 @@ mwMaskStimulus::mwMaskStimulus(std::string _tag, std::string _filename,
                                shared_ptr<Variable> _random_seed,
                                shared_ptr<Variable> _random_phase_per_channel)
                                 : ImageStimulus (_tag, _filename, _xoffset, _yoffset, _xscale, _yscale, _rot, _alpha),
-                                rng(_random_seed->getValue().getBool()), phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
+                                rng(_random_seed->getValue().getInteger()), phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
     random_seed = _random_seed;
     imageLoaded = false;
+    random_phase_per_channel = _random_phase_per_channel;
+}
+
+mwMaskStimulus::mwMaskStimulus(std::string _tag, std::string _filename,
+               ExpandableList<GLuint> *_texture_maps,
+               int _width,
+               int _height,
+               shared_ptr<Variable> _xoffset,
+               shared_ptr<Variable> _yoffset,
+               shared_ptr<Variable> _xscale,
+               shared_ptr<Variable> _yscale,
+               shared_ptr<Variable> _rot,
+               shared_ptr<Variable> _alpha,
+               shared_ptr<Variable> _random_seed,
+               shared_ptr<Variable> _random_phase_per_channel)
+                : ImageStimulus (_tag, _filename, _xoffset, _yoffset, _xscale, _yscale, _rot, _alpha),
+                rng(_random_seed->getValue().getInteger()), phase_distribution(-3.14,3.14), random_phase_gen(rng,phase_distribution) {
+    filename = _filename;
+    texture_maps = _texture_maps;
+    width = _width;
+    height = _height;
+    imageLoaded = false;
+    random_seed = _random_seed;
     random_phase_per_channel = _random_phase_per_channel;
 }
 
@@ -56,6 +79,50 @@ mwMaskStimulus::~mwMaskStimulus(){
         }
         // !!! TODO !!! free fftwf data
     }
+}
+
+Stimulus * mwMaskStimulus::frozenClone(){
+    //mprintf("mwMaskStimulus::frozenClone called...");
+	shared_ptr<Variable> x_clone(xoffset->frozenClone());
+	shared_ptr<Variable> y_clone(yoffset->frozenClone());
+	shared_ptr<Variable> xs_clone(xscale->frozenClone());
+	shared_ptr<Variable> ys_clone(yscale->frozenClone());
+	shared_ptr<Variable> r_clone(rotation->frozenClone());
+	shared_ptr<Variable> a_clone(alpha_multiplier->frozenClone());
+    shared_ptr<Variable> s_clone(random_seed->frozenClone());
+    shared_ptr<Variable> rp_clone(random_phase_per_channel->frozenClone());
+    
+	mwMaskStimulus *clone = 
+    new mwMaskStimulus(tag,
+                       filename,
+                       new ExpandableList<GLuint>(*texture_maps),
+                       width,
+                       height,
+                       x_clone,
+                       y_clone,
+                       xs_clone,
+                       ys_clone,
+                       r_clone,
+                       a_clone,
+                       s_clone,
+                       rp_clone);
+    /*
+    new ImageStimulus(tag, 
+                      filename,
+                      new ExpandableList<GLuint>(*texture_maps),
+                      width,
+                      height,
+                      x_clone,
+                      y_clone,
+                      xs_clone,
+                      ys_clone,
+                      r_clone,
+                      a_clone);
+    
+	*/
+	clone->setIsFrozen(true);
+    
+	return clone;
 }
 
 //shared_ptr<Variable> mwMaskStimulus::getRandomSeed() {
@@ -111,7 +178,7 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
     fftwf_complex *random_phase = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * height * width);
     // use the generator to fill the phase array
     if (!(random_phase_per_channel->getValue().getBool())) {
-        mprintf("--Mask-- Generating phase for ALL channels");
+        //mprintf("--Mask-- Generating phase for ALL channels");
         for (int i = 0; i < (height * width); i++) {
             complex<float> temp_phase(0.0,random_phase_gen());
             temp_phase = exp(temp_phase);
@@ -119,7 +186,7 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
             random_phase[i][1] = imag(temp_phase);
             //random_phase[i] = reinterpret_cast<fftwf_complex>(exp(temp_phase));
         }
-        mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
+        //mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
     }
     // make space for mask
     float *mask_data = (float*)calloc(height*width*4,sizeof(float));
@@ -131,14 +198,14 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
         fftwf_complex *in = (fftwf_complex*) fftwf_malloc(sizeof(fftwf_complex) * ((height * width)/ 2 + 1));
         
         if (random_phase_per_channel->getValue().getBool()) {
-            mprintf("--Mask-- Generating phase for channel %i",i);
+            //mprintf("--Mask-- Generating phase for channel %i",i);
             for (int j = 0; j < (height * width); j++) {
                 complex<float> temp_phase(0.0,random_phase_gen());
                 temp_phase = exp(temp_phase);
                 random_phase[j][0] = real(temp_phase);
                 random_phase[j][1] = imag(temp_phase);
             }
-            mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
+            //mprintf("--Mask-- phase[0][0] = %f",random_phase[0][0]);
         }
         // fill input
         //for (int j = 0; j < (height * width); j++) {
@@ -219,9 +286,9 @@ void mwMaskStimulus::makeMask(StimulusDisplay *display) {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_FLOAT, mask_data);
         gluBuild2DMipmaps(GL_TEXTURE_2D,GL_RGBA,width,height,GL_RGBA,GL_FLOAT,mask_data);
-		if(texture_map){
-			mprintf("Image Mask loaded into texture_map %d", texture_map);
-		}
+		//if(texture_map){
+		//	mprintf("Image Mask loaded into texture_map %d", texture_map);
+		//}
         // !!! do I need to readd the texture to the list !!!
         texture_maps->addElement(i, texture_map);
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -252,14 +319,14 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
 	fclose(test);
     
     if( !OpenGLImageLoader::initialized) {
-        mprintf("--Mask-- starting Devil"); std::cout << "--Mask starting Devil\n";
+        //mprintf("--Mask-- starting Devil"); std::cout << "--Mask starting Devil\n";
         // start up Devil
         ilInit();
         // start up OpenGL
         ilutInit(); // !!! necessary?
         ilutRenderer(ILUT_OPENGL); // !!! necessary?
         ilutEnable(ILUT_OPENGL_CONV); // !!! necessary?
-        mprintf("--Mask-- Devil started"); std::cout << "--Mask Devil started\n";
+        //mprintf("--Mask-- Devil started"); std::cout << "--Mask Devil started\n";
     }
     
     //load image from FILE
@@ -344,7 +411,7 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         //printStats(channel_modulus[i],((height*width)/2+1));
     }
     
-    mprintf("--Mask-- moving mask"); std::cout << "--Mask moving mask\n";
+    //mprintf("--Mask-- moving mask"); std::cout << "--Mask moving mask\n";
     // move 'masks' (original images right now) to gpu
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
@@ -357,9 +424,9 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_FLOAT, mask_data);
         gluBuild2DMipmaps(GL_TEXTURE_2D,GL_RGBA,width,height,GL_RGBA,GL_FLOAT,image_data);
-		if(texture_map){
-			mprintf("Image Mask loaded into texture_map %d", texture_map);
-		}
+		//if(texture_map){
+		//	mprintf("Image Mask loaded into texture_map %d", texture_map);
+		//}
         // !!! do I need to readd the texture to the list !!!
         texture_maps->addElement(i, texture_map);
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -396,22 +463,24 @@ void mwMaskStimulus::load(StimulusDisplay *display) {
 }
 
 Data mwMaskStimulus::getCurrentAnnounceDrawData() {
-    
-    //mprintf("getting announce DRAW data for image stimulus %s",tag );
+    //mprintf("!@#$!@#$!@#$!@#getting announce DRAW data for image stimulus %s",tag.c_str() );
     
     Data announceData(M_DICTIONARY, 11);
     announceData.addElement(STIM_NAME,tag);        // char
     announceData.addElement(STIM_ACTION,STIM_ACTION_DRAW);
-    announceData.addElement(STIM_TYPE,STIM_TYPE_IMAGE);
+    announceData.addElement(STIM_TYPE,"image_mask");
     announceData.addElement(STIM_FILENAME,filename);  
     announceData.addElement(STIM_POSX,last_posx);  
     announceData.addElement(STIM_POSY,last_posy);  
     announceData.addElement(STIM_SIZEX,last_sizex);  
     announceData.addElement(STIM_SIZEY,last_sizey);  
     announceData.addElement(STIM_ROT,last_rot);
+    //announceData.addElement("foo",720.0);
     //
-    announceData.addElement("random_seed",random_seed->getValue());
-    announceData.addElement("random_phase_per_channel",random_phase_per_channel->getValue());
+    announceData.addElement("random_seed",random_seed->getValue().getInteger());
+    //std::cout << "AHHHHHHHHHHHHHHHHHHHHHHHHHH: " << random_phase_per_channel->getValue().getBool() << "\n";
+    //std::cout << "!@#$!@#$!@#$!@#$!@#$!@#$------------ Announcing data" << random_seed->getValue().getInteger() << "\n";
+    announceData.addElement("per_channel",random_phase_per_channel->getValue().getBool());
     //TODO    announceData.addElement(STIM_ALPHA,last_alpha);  
     
     return (announceData);

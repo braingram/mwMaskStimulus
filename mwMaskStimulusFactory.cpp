@@ -68,8 +68,11 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
 //    }
     // get random seed from 
     //shared_ptr<Variable> random_seed = reg->getVariable(parameters["random_seed"], seedStr);
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    uint32_t default_seed = (tv.tv_sec % 1000) * 1000000 + tv.tv_usec;
     
-    uint32_t default_seed = static_cast<unsigned int>(std::time(0));
+    //uint32_t default_seed = static_cast<unsigned int>(std::time(0));
     shared_ptr<Variable> random_seed(new ConstantVariable(Data((long)default_seed))); 
     if(!parameters["random_seed"].empty()){
         random_seed = reg->getVariable(parameters.find("random_seed")->second);
@@ -101,6 +104,8 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
 	checkAttribute(y_position, parameters.find("reference_id")->second, "y_position", parameters.find("y_position")->second);
 	checkAttribute(rotation, parameters.find("reference_id")->second, "rotation", parameters.find("rotation")->second);
 	checkAttribute(alpha_multiplier,parameters.find("reference_id")->second, "alpha_multiplier", parameters.find("alpha_multiplier")->second);
+    checkAttribute(random_seed, parameters.find("reference_id")->second, "random_seed", parameters.find("random_seed")->second);
+    checkAttribute(random_phase_per_channel, parameters.find("reference_id")->second, "random_phase_per_channel", parameters.find("random_phase_per_channel")->second);
 	if(!boost::filesystem::exists(full_path)) {
 		throw InvalidReferenceException(parameters.find("reference_id")->second, "path", parameters.find("path")->second);
 	}
@@ -108,8 +113,6 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
 	if(boost::filesystem::is_directory(full_path)) {
 		throw InvalidReferenceException(parameters.find("reference_id")->second, "path", parameters.find("path")->second);
 	}
-    
-    // TODO: check seed and phase_per_channel
 	
 	if(GlobalCurrentExperiment == NULL) {
 		throw SimpleException("no experiment currently defined");		
@@ -138,9 +141,9 @@ shared_ptr<mw::Component> mwMaskStimulusFactory::createObject(std::map<std::stri
                                                                                               random_seed,
                                                                                               random_phase_per_channel));
 	//shared_ptr <mwMaskStimulus> newMaskStimulus = shared_ptr<mwMaskStimulus>(new mwMaskStimulus(tagname, another_attribute));
-
-    bool deferred = true;
+    
     // bjg: do not read the deferred varialbe from XML, it should always be true
+    bool deferred = true;
     //if(!parameters["deferred"].empty()){
     //    deferred = reg->getBoolean(parameters["deferred"]);
     //}
